@@ -9,7 +9,7 @@ import { ComponentsModule } from './components/components.module';
     CommonModule,
   ],
   exports: [
-    ComponentsModule
+    ComponentsModule,
   ]
 
 })

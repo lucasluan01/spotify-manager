@@ -1,7 +1,9 @@
 :host {
-    background-color: tomato;
     height: 100%;
     width: 100%;
-    padding: 30px;
     box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }

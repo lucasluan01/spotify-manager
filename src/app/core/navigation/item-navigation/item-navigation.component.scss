@@ -16,9 +16,8 @@
 
         span,
         i {
-            color: map-get($map: $color-text, $key: 'light');
+            color: map-get($map: $color-text, $key: 'high');
         }
     }
-
 
 }

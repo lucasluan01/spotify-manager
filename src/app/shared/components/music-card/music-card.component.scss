@@ -1,0 +1,68 @@
+@import 'variables.scss';
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 15px;
+    gap: 10px;
+
+    background: map-get($map: $color-grey, $key: '01dp');
+    border-radius: 5px;
+
+    &:hover {
+        background: map-get($map: $color-grey, $key: '02dp');
+    }
+}
+
+.header {
+    border-radius: inherit;
+    width: 100%;
+    // height: 175px;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 0 10px 2px map-get($map: $color-grey, $key: '00dp');
+
+    .image-default {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: inherit;
+        height: 100%;
+        width: 100%;
+        background-color: map-get($map: $color-grey, $key: '02dp');
+
+        i {
+            font-size: 6rem;
+            color: map-get($map: $color-grey, $key: '24dp');
+        }
+    }
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    
+    .title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        // white-space: nowrap;
+        font-weight: 700;
+        // font-size: 16px;
+        color: map-get($map: $color-text, $key: 'high');
+    }
+    
+    .description {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        color: map-get($map: $color-text, $key: 'medium');
+    }
+}
