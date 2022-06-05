@@ -1,0 +1,8 @@
+<div class="container">
+	<h1 class="title">Gerenciador Spotify</h1>
+	<div class="menu">
+		<ng-container *ngFor="let items of menu">
+			<app-item-navigation [icon]="items.icon" [name]="items.name" routerLinkActive="router-link-active" ></app-item-navigation>
+		</ng-container>
+	</div>
+</div>

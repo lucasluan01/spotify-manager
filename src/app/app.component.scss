@@ -1,0 +1,15 @@
+@import 'variables.scss';
+
+:host {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template: 100vh / 250px 1fr;
+}
+
+.main-content {
+    background-color: map-get($map: $color-grey, $key: '00dp');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
