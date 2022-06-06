@@ -1,0 +1,24 @@
+.gender-card {
+    // width: 100%;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #C90D73;
+    display: flex;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    .title {
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+
+    i {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 6rem;
+        transform: rotate(25deg);
+    }
+}
