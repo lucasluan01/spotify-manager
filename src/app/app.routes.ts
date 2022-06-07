@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { HomeComponent } from './modules/home/home.component';
 import { MyLibraryComponent } from './modules/my-library/my-library.component';
+import { PlaylistComponent } from './modules/playlist/playlist/playlist.component';
 import { SearchComponent } from './modules/search/search.component';
 
 export const appRoutes: Routes = [
@@ -16,5 +17,9 @@ export const appRoutes: Routes = [
   {
     path: 'my-library',
     component: MyLibraryComponent
+  },
+  {
+    path: 'playlist',
+    component: PlaylistComponent
   }
 ];

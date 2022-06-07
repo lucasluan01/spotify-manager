@@ -8,6 +8,7 @@ import { NavigationModule } from './core/navigation/navigation.module';
 import { HomeModule } from './modules/home/home.module';
 import { SearchModule } from './modules/search/search.module';
 import { MyLibraryModule } from './modules/my-library/my-library.module';
+import { PlaylistModule } from './modules/playlist/playlist.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MyLibraryModule } from './modules/my-library/my-library.module';
     HomeModule,
     SearchModule,
     MyLibraryModule,
+    PlaylistModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MusicCardComponent } from './music-card/music-card.component';
 import { ListMusicCardComponent } from './list-music-card/list-music-card.component';
 import { InputSearchComponent } from './input-search/input-search.component';
+import { HeaderBannerComponent } from './header-banner/header-banner.component';
 
 
 
@@ -10,7 +11,8 @@ import { InputSearchComponent } from './input-search/input-search.component';
   declarations: [
     MusicCardComponent,
     ListMusicCardComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    HeaderBannerComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { InputSearchComponent } from './input-search/input-search.component';
   exports: [
     MusicCardComponent,
     ListMusicCardComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    HeaderBannerComponent
   ]
 })
 export class ComponentsModule { }
