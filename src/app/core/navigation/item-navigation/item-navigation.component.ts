@@ -9,6 +9,7 @@ export class ItemNavigationComponent implements OnInit {
 
   @Input() icon: string = '';
   @Input() name: string = '';
+  @Input() link: string = '';
 
   constructor() { }
 

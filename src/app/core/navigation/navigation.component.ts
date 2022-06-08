@@ -11,22 +11,27 @@ export class NavigationComponent implements OnInit {
     {
       name: 'Início',
       icon: 'home',
+      link: ''
     },
     {
       name: 'Buscar',
       icon: 'search',
+      link: '/search'
     },
     {
       name: 'Biblioteca',
       icon: 'library_music',
+      link: '/my-library'
     },
     {
       name: 'Dashboard',
       icon: 'dashboard',
+      link: '/playlist'
     },
     {
       name: 'Criar Playlist',
       icon: 'playlist_add',
+      link: '/playlist'
     }
   ]
 

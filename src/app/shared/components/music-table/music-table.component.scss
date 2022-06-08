@@ -1,0 +1,66 @@
+@import 'variables.scss';
+
+table {
+    font-size: 14px;
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+        border-bottom: 1px solid map-get($map: $color-grey, $key: '02dp');
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+
+    td,
+    th {
+        padding: 5px 15px 5px 0;
+        color: map-get($map: $color-text, $key: 'medium');
+    }
+
+    :is(td, th):first-child, :is(td, th):last-child {
+        text-align: end;
+    }
+
+    i,
+    .music-artist {
+        color: map-get($map: $color-text, $key: 'medium');
+    }
+
+    td:nth-child(2) {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        i {
+            float: left;
+            font-size: 50px;
+        }
+
+        .title-info {
+            display: flex;
+            flex-direction: column;
+
+
+            .music-title {
+                font-size: 16px;
+                color: map-get($map: $color-text, $key: 'high');
+            }
+        }
+    }
+
+    td:nth-child(5) {
+        padding-right: 20px;
+    }
+
+    tbody {
+        tr:hover {
+            background-color: map-get($map: $color-grey, $key: '02dp');
+
+            td,
+            td * {
+                color: map-get($map: $color-text, $key: 'high');
+            }
+        }
+    }
+}

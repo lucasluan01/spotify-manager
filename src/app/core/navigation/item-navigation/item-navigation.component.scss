@@ -6,6 +6,7 @@
     gap: 10px;
     padding: 10px;
     cursor: pointer;
+    text-decoration: none;
     
     span, i {
         color: map-get($map: $color-text, $key: 'medium');

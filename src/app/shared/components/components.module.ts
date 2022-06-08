@@ -4,6 +4,7 @@ import { MusicCardComponent } from './music-card/music-card.component';
 import { ListMusicCardComponent } from './list-music-card/list-music-card.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { HeaderBannerComponent } from './header-banner/header-banner.component';
+import { MusicTableComponent } from './music-table/music-table.component';
 
 
 
@@ -12,7 +13,8 @@ import { HeaderBannerComponent } from './header-banner/header-banner.component';
     MusicCardComponent,
     ListMusicCardComponent,
     InputSearchComponent,
-    HeaderBannerComponent
+    HeaderBannerComponent,
+    MusicTableComponent
   ],
   imports: [
     CommonModule
@@ -21,7 +23,8 @@ import { HeaderBannerComponent } from './header-banner/header-banner.component';
     MusicCardComponent,
     ListMusicCardComponent,
     InputSearchComponent,
-    HeaderBannerComponent
+    HeaderBannerComponent,
+    MusicTableComponent
   ]
 })
 export class ComponentsModule { }

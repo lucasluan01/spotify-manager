@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { NavigationComponent } from './navigation.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -12,7 +13,8 @@ import { ItemNavigationComponent } from './item-navigation/item-navigation.compo
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     NavigationComponent
