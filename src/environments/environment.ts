@@ -6,6 +6,15 @@ export const environment = {
   production: false
 };
 
+export const authorizationSpotify = {
+  clientId: '3a17febb99344e8180c6cf30378d09d8',
+  redirectUri: 'http://localhost:4200/',
+  authEndPoint: 'https://accounts.spotify.com/authorize',
+  scopes: [
+    'user-library-read'
+  ]
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

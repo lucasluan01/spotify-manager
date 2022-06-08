@@ -7,6 +7,8 @@ import { appRoutes } from './app.routes';
 import { PanelModule } from './modules/panel/panel.module';
 import { LoginModule } from './modules/login/login.module';
 
+import { AuthenticationService } from './core/authentication/authentication.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,7 @@ import { LoginModule } from './modules/login/login.module';
     PanelModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
