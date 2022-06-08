@@ -1,16 +1,20 @@
 <div class="card">
     <div class="header">
-        <!-- <img src="" alt=""> -->
-        <div class="image-default">
-            <i class="material-icons">music_note</i>
-        </div>
+        <ng-container *ngIf="image" >
+            <img src="{{ image }}" alt="" width="175">
+        </ng-container>
+        <ng-container *ngIf="!image">
+            <div class="image-default">
+                <i class="material-icons">music_note</i>
+            </div>
+        </ng-container>
     </div>
     <div class="body">
         <div class="title">
-            Nome da Playlist: Lorem, ipsum dolor.
+            {{ name }}
         </div>
         <div class="description">
-            Descrição da Playlist: Lorem ipsum dolor sit amet consectetur.
+            De {{ woner }}
         </div>
     </div>
 </div>

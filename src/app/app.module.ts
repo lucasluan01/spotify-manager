@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { appRoutes } from './app.routes';
-import { PanelModule } from './modules/panel/panel.module';
-import { LoginModule } from './modules/login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthenticationService } from './core/authentication/authentication.service';
+import { PanelModule } from './modules/panel/panel.module';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthenticationService } from './core/authentication/authentication.serv
     BrowserModule,
     LoginModule,
     PanelModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthenticationService],

@@ -12,7 +12,7 @@
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, 205px);
     gap: 20px;
 
     .likes-songs {
@@ -20,7 +20,7 @@
         background: $gradient;
         border-radius: 5px;
         padding: 15px;
-
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
