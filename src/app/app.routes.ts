@@ -1,25 +1,17 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './modules/home/home.component';
-import { MyLibraryComponent } from './modules/my-library/my-library.component';
-import { PlaylistComponent } from './modules/playlist/playlist/playlist.component';
-import { SearchComponent } from './modules/search/search.component';
-
 export const appRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-    path: 'search',
-    component: SearchComponent
+    path: 'login',
+    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'my-library',
-    component: MyLibraryComponent
+    path: 'panel',
+    loadChildren: () => import('./modules/panel/panel.module').then(m => m.PanelModule)
   },
-  {
-    path: 'playlist',
-    component: PlaylistComponent
-  }
 ];

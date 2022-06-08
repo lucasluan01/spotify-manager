@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
 import { appRoutes } from './app.routes';
-import { AppComponent } from './app.component';
-import { NavigationModule } from './core/navigation/navigation.module';
-import { HomeModule } from './modules/home/home.module';
-import { SearchModule } from './modules/search/search.module';
-import { MyLibraryModule } from './modules/my-library/my-library.module';
-import { PlaylistModule } from './modules/playlist/playlist.module';
+import { PanelModule } from './modules/panel/panel.module';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +13,8 @@ import { PlaylistModule } from './modules/playlist/playlist.module';
   ],
   imports: [
     BrowserModule,
-    NavigationModule,
-    HomeModule,
-    SearchModule,
-    MyLibraryModule,
-    PlaylistModule,
+    LoginModule,
+    PanelModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
