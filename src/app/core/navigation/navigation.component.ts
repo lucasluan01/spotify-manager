@@ -26,12 +26,12 @@ export class NavigationComponent implements OnInit {
     {
       name: 'Dashboard',
       icon: 'dashboard',
-      link: 'playlist'
+      link: ''
     },
     {
       name: 'Criar Playlist',
       icon: 'playlist_add',
-      link: 'playlist'
+      link: ''
     }
   ]
 

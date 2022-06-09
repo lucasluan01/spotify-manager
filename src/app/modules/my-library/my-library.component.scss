@@ -12,7 +12,9 @@
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 205px);
+    grid-template-columns: repeat(auto-fit, minmax(177px, 1fr));
+    // display: flex;
+    // flex-wrap: wrap;
     gap: 20px;
 
     .likes-songs {

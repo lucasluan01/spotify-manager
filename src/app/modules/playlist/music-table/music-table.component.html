@@ -1,0 +1,31 @@
+<table>
+    <thead>
+        <tr>
+            <th class="number">#</th>
+            <th>Título</th>
+            <th>Álbum</th>
+            <th>Adicionado em</th>
+            <th></th>
+            <th class="duration">
+                <i class="material-icons">access_time</i>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let track of tracks, let i = index">
+            <td class="number">{{i + 1}}</td>
+            <td class="title">
+                <img class="image" src="{{ track.track.album.images[1]?.url || track.track.album.images[0]?.url }}"
+                    alt="">
+                <p class="music-title">{{track.track.name}}</p>
+                <p class="artist">{{track.track.artists[0].name}}</p>
+            </td>
+            <td class="album"><span>{{ track.track.album.name }}</span></td>
+            <td>{{ track.added_at | date:"d MMM. 'de' y" }}</td>
+            <td class="favorite">
+                <i class="material-icons">favorite</i>
+            </td>
+            <td class="duration">{{ track.track.duration_ms }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+<a class="btn-backTo" (click)="onBackToLibrary()">
+    <i class="material-icons">arrow_back_ios</i>
+    <span>voltar</span>
+</a>
+
+<div class="group">
+    <ng-container *ngIf="image">
+        <img src="{{image}}" alt="" width="175">
+    </ng-container>
+    <ng-container *ngIf="!image">
+        <div class="image-default">
+            <i class="material-icons">music_note</i>
+        </div>
+    </ng-container>
+    <div class="info">
+        <h2 class="title">{{name}}</h2>
+        <div class="description">
+            <a class="owner-profile" href="/playlist">
+                <i class="material-icons">account_circle</i>
+                <span class="name">{{owner}}</span>
+            </a>
+            <span>{{totalNumber}} músicas</span>
+            <!-- <span>59 min 40s</span> -->
+        </div>
+    </div>
+</div>

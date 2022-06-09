@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LibraryApiService } from 'src/app/core/http/library/library-api.service';
+import { Router } from '@angular/router';
 
+import { LibraryApiService } from 'src/app/core/http/library/library-api.service';
 import { PlaylistsApiService } from 'src/app/core/http/playlists-api/playlists-api.service';
 
 
@@ -17,7 +18,8 @@ export class MyLibraryComponent implements OnInit {
 
   constructor(
     private _playlistsApiService: PlaylistsApiService,
-    private _libraryApiService: LibraryApiService
+    private _libraryApiService: LibraryApiService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -43,5 +45,9 @@ export class MyLibraryComponent implements OnInit {
         this.numberSavedTracks = response.total;
       }
     );
+  }
+
+  onClick(id: string) {
+    this._router.navigate(['/panel/playlist', id])
   }
 }

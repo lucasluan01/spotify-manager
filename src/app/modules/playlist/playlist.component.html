@@ -1,0 +1,14 @@
+<app-header-banner
+  [name]="playlist?.name"
+  [totalNumber]="playlist?.tracks?.total"
+  [image]="playlist?.images[1]?.url || playlist?.images[0]?.url"
+  [owner]="playlist?.owner?.display_name"
+></app-header-banner>
+
+<!-- <div class="group">
+  <app-input-search></app-input-search>
+</div> -->
+
+<app-music-table
+[tracks]="tracks"
+></app-music-table>

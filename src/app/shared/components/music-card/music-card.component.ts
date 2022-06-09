@@ -9,7 +9,7 @@ export class MusicCardComponent implements OnInit {
 
   @Input() name: string = '';
   @Input() image: string = '';
-  @Input() woner: string = '';
+  @Input() owner: string = '';
 
   constructor() { }
 

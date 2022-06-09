@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { HomeComponent } from '../home/home.component';
 import { MyLibraryComponent } from '../my-library/my-library.component';
-import { PlaylistComponent } from '../playlist/playlist/playlist.component';
+import { PlaylistComponent } from '../playlist/playlist.component';
 import { SearchComponent } from '../search/search.component';
 import { PanelComponent } from './panel.component';
 
@@ -29,7 +29,7 @@ export const panelRoutes: Routes = [
                 component: MyLibraryComponent
             },
             {
-                path: 'playlist',
+                path: 'playlist/:id',
                 component: PlaylistComponent
             }
         ]

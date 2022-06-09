@@ -9,6 +9,9 @@
     gap: 10px;
     cursor: pointer;
 
+    width: 100%;
+    height: 100%;
+
     background: map-get($map: $color-grey, $key: '01dp');
     border-radius: 5px;
 
@@ -19,8 +22,8 @@
 
 .header {
     border-radius: inherit;
-    height: 175px;
-    aspect-ratio: 1 / 1;
+    width: 100%;
+    aspect-ratio: 1;
     box-shadow: 0 0 10px 2px map-get($map: $color-grey, $key: '00dp');
 
     img {
@@ -55,7 +58,6 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
-
 
     .title {
         white-space: nowrap;

@@ -21,4 +21,13 @@ export class PlaylistsApiService {
   getCurrentUserPlaylists(offset: number = 0) {
     return this._http.get(`${environment.apiUrl}/${environment.currentUser}/${environment.playlists}?limit=50&offset=${offset}`, { headers: this.httpOptions });
   }
+
+  getPlaylist(id: string) {
+    return this._http.get(`${environment.apiUrl}/${environment.playlists}/${id}`, { headers: this.httpOptions });
+  }
+
+  getPlaylistItems(id: string, offset: number = 0) {
+    return this._http.get(`${environment.apiUrl}/${environment.playlists}/${id}/${environment.tracks}?limit=100&offset=${offset}`, { headers: this.httpOptions });
+  }
+  
 }

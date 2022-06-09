@@ -1,0 +1,81 @@
+@import 'variables.scss';
+
+
+table {
+    width: 100%;
+    // table-layout: auto;
+    // width: 100%;
+}
+
+// th, td {
+//     text-align: start;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//         white-space: nowrap;
+// }
+
+// th,
+// td {
+// }
+
+// table {
+//     width: 100%;
+//     display: grid;
+//     border-collapse: collapse;
+//     grid-template-columns: auto repeat(2, minmax(auto, 1fr)) repeat(3, auto);
+//     font-size: 14px;
+//     align-items: center;
+
+//     * {
+//         color: map-get($map: $color-text, $key: 'medium');
+//     }
+
+//     thead,
+//     tbody,
+//     tr {
+//         display: contents;
+//     }
+
+//     th,
+//     td,
+//     p {
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//         white-space: nowrap;
+//     }
+
+//     td,
+//     th {
+
+//         padding: 10px;
+//         box-sizing: border-box;
+//         font-weight: 400;
+//     }
+
+//     th {
+//         border-bottom: 1px solid map-get($map: $color-grey, $key: '02dp');
+//         text-transform: uppercase;
+//     }
+// }
+
+.number,
+.duration {
+    text-align: end;
+}
+
+.title {
+
+    .image {
+        float: left;
+        margin-right: 10px;
+        width: 40px;
+        object-fit: cover;
+        background-size: cover;
+    }
+
+    .music-title {
+        font-size: 16px;
+        font-weight: 500;
+        color: map-get($map: $color-text, $key: 'high');
+    }
+}
