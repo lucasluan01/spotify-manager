@@ -1,69 +1,61 @@
 @import 'variables.scss';
 
+* {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: map-get($map: $color-text, $key: 'medium');
+}
+
+i {
+    font-size: 1.5rem;
+}
 
 table {
     width: 100%;
-    // table-layout: auto;
-    // width: 100%;
+
+    thead tr {
+        border-bottom: 1px solid map-get($map: $color-grey, $key: '02dp');
+        text-transform: uppercase;
+    }
+
+    tr {
+        display: grid;
+        grid-template-columns: 30px repeat(2, 1fr) .75fr 60px 58px;
+        align-items: center;
+        justify-items: flex-start;
+        padding: 10px 15px;
+        gap: 30px;
+    }
+
+    tbody tr:hover {
+        background-color: map-get($map: $color-grey, $key: '02dp');
+    }
 }
-
-// th, td {
-//     text-align: start;
-//         overflow: hidden;
-//         text-overflow: ellipsis;
-//         white-space: nowrap;
-// }
-
-// th,
-// td {
-// }
-
-// table {
-//     width: 100%;
-//     display: grid;
-//     border-collapse: collapse;
-//     grid-template-columns: auto repeat(2, minmax(auto, 1fr)) repeat(3, auto);
-//     font-size: 14px;
-//     align-items: center;
-
-//     * {
-//         color: map-get($map: $color-text, $key: 'medium');
-//     }
-
-//     thead,
-//     tbody,
-//     tr {
-//         display: contents;
-//     }
-
-//     th,
-//     td,
-//     p {
-//         overflow: hidden;
-//         text-overflow: ellipsis;
-//         white-space: nowrap;
-//     }
-
-//     td,
-//     th {
-
-//         padding: 10px;
-//         box-sizing: border-box;
-//         font-weight: 400;
-//     }
-
-//     th {
-//         border-bottom: 1px solid map-get($map: $color-grey, $key: '02dp');
-//         text-transform: uppercase;
-//     }
-// }
 
 .number,
 .duration {
+    justify-self: flex-end;
     text-align: end;
 }
 
+td.favorite {
+    justify-self: center;
+    text-align: center;
+}
+
+td,
+.aa {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .title {
+    display: flex;
+    gap: 10px;
+    width: 100%;
 
     .image {
         float: left;
