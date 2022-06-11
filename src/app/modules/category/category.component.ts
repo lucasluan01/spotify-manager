@@ -29,14 +29,15 @@ export class CategoryComponent implements OnInit {
     this.getCategoryPlaylists();
   }
 
-  getCategoryPlaylists(offset: number = 0) {
-    this._browseApiService.getCategoryPlaylists(this.idCategory, offset).subscribe(
+  getCategoryPlaylists() {
+    this._browseApiService.getCategoryPlaylists(this.idCategory, this.offset).subscribe(
       (response: any) => {
         if (!!response.playlists.next) {
           this.offset += response.playlists.limit;
           this.getCategoryPlaylists();
         }
         this.playlists = [...this.playlists, ...response.playlists.items];
+        console.log(response);
       }
     );
   }
