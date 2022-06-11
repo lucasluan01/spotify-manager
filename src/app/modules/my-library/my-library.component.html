@@ -9,7 +9,7 @@
       [name]="playlist.name"
       [image]="playlist.images[1]?.url || playlist.images[0]?.url"
       [owner]="playlist.owner.display_name"
-      (click)="onClick(playlist.id)"
+      [id]="playlist.id"
     >
     </app-music-card>
   </ng-container>

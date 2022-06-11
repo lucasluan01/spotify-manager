@@ -1,0 +1,21 @@
+@import 'variables.scss';
+
+:host {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(177px, 1fr));
+    gap: 20px;
+}
+
+.title {
+    font-size: 6vw;
+}

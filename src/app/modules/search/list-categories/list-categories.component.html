@@ -1,0 +1,8 @@
+<div class="list-categories">
+    <h2 class="title">{{title}}</h2>
+    <div class="items">
+        <ng-container *ngFor="let category of categories">
+            <app-category-card [name]="category.name" [image]="category.icons[0].url" [idCategory]="category.id"></app-category-card>
+        </ng-container>
+    </div>
+</div>

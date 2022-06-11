@@ -9,6 +9,10 @@ export const environment = {
   playlists: 'playlists',
   tracks: 'tracks',
   recommendations: 'recommendations',
+  browse: 'browse',
+  categories: 'categories',
+  country: 'BR',
+  locale: 'pt_BR',
 };
 
 export const authorizationSpotify = {

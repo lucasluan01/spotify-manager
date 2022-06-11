@@ -1,0 +1,32 @@
+.category-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(to right, #093028, #237A57);
+    display: flex;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+
+    .title {
+        font-weight: 700;
+        font-size: 1.25rem;
+        word-wrap: break-word;
+        width: 100%;
+    }
+
+    .image {
+        width: 60%;
+        aspect-ratio: 1/1;
+        position: absolute;
+        bottom:-20px;
+        right: -20px;
+        transform: rotate(33deg);
+    }
+
+    &:hover {
+        filter: brightness(1.75);
+    }
+}

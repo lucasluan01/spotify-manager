@@ -29,7 +29,6 @@ export class PlaylistComponent implements OnInit {
   getIdPlaylist() {
     this._activatedRoute.params.subscribe(params => {
       this.idPlaylist = params['id'];
-      console.log(this.idPlaylist);
     });
   }
 
@@ -49,7 +48,6 @@ export class PlaylistComponent implements OnInit {
           this.getPlaylistItems();
         }
         this.tracks = [...this.tracks, ...tracks.items];
-        console.log(this.tracks);
         
       }
     );

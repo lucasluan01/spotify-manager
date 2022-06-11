@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CategoryComponent } from '../category/category.component';
 
 import { HomeComponent } from '../home/home.component';
 import { MyLibraryComponent } from '../my-library/my-library.component';
@@ -31,6 +32,10 @@ export const panelRoutes: Routes = [
             {
                 path: 'playlist/:id',
                 component: PlaylistComponent
+            },
+            {
+                path: 'category/:id',
+                component: CategoryComponent
             }
         ]
     }

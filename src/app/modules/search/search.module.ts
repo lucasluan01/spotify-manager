@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ListGenresComponent } from './list-genres/list-genres.component';
 import { SearchComponent } from './search.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { GenreCardComponent } from './genre-card/genre-card.component';
+import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { CategoryCardComponent } from './category-card/category-card.component';
 
 
 @NgModule({
   declarations: [
-    ListGenresComponent,
     SearchComponent,
-    GenreCardComponent
+    ListCategoriesComponent,
+    CategoryCardComponent
   ],
   imports: [
     CommonModule,

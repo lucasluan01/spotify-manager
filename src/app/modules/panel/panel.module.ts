@@ -11,6 +11,7 @@ import { SearchModule } from '../search/search.module';
 import { MyLibraryModule } from '../my-library/my-library.module';
 import { PlaylistModule } from '../playlist/playlist.module';
 import { LoginModule } from '../login/login.module';
+import { CategoryModule } from '../category/category.module';
 
 
 
@@ -26,6 +27,7 @@ import { LoginModule } from '../login/login.module';
     MyLibraryModule,
     PlaylistModule,
     LoginModule,
+    CategoryModule,
     RouterModule.forChild(panelRoutes)
   ],
   exports: [

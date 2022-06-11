@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-music-card',
@@ -10,10 +11,17 @@ export class MusicCardComponent implements OnInit {
   @Input() name: string = '';
   @Input() image: string = '';
   @Input() owner: string = '';
+  @Input() id: string = '';
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onPlaylist(id: string) {
+    this._router.navigate(['/panel/playlist', id])
   }
 
 }

@@ -46,8 +46,5 @@ export class MyLibraryComponent implements OnInit {
       }
     );
   }
-
-  onClick(id: string) {
-    this._router.navigate(['/panel/playlist', id])
-  }
+  
 }
