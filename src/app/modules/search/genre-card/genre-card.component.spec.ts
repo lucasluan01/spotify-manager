@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenderCardComponent } from './gender-card.component';
+import { GenreCardComponent } from './genre-card.component';
 
-describe('GenderCardComponent', () => {
-  let component: GenderCardComponent;
-  let fixture: ComponentFixture<GenderCardComponent>;
+describe('GenreCardComponent', () => {
+  let component: GenreCardComponent;
+  let fixture: ComponentFixture<GenreCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenderCardComponent ]
+      declarations: [ GenreCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenderCardComponent);
+    fixture = TestBed.createComponent(GenreCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

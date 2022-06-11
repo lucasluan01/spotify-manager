@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-genres',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-genres.component.scss']
 })
 export class ListGenresComponent implements OnInit {
+
+  @Input() genres: any[] = [];
+  @Input() title: string = '';
 
   constructor() { }
 

@@ -8,6 +8,7 @@ export const environment = {
   currentUser: 'me',
   playlists: 'playlists',
   tracks: 'tracks',
+  recommendations: 'recommendations',
 };
 
 export const authorizationSpotify = {

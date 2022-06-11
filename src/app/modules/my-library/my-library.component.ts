@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LibraryApiService } from 'src/app/core/http/library/library-api.service';
-import { PlaylistsApiService } from 'src/app/core/http/playlists-api/playlists-api.service';
+import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.service';
 
 
 @Component({
