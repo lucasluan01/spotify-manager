@@ -34,18 +34,25 @@
         * {
             color: map-get($map: $color-text, $key: 'high');
         }
+
+        img {
+            border: 2px solid map-get($map: $color-text, $key: 'high');
+        }
     }
 }
+
 ul {
     margin: 0;
     padding: 0;
     text-indent: 0;
     list-style-type: 0;
 }
+
 img {
     width: 30px;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
+    border: 2px solid map-get($map: $color-text, $key: 'disabled');
 }
 
 i.material-icons {

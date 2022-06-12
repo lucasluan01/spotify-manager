@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
       link: 'search'
     },
     {
-      name: 'Biblioteca',
+      name: 'Minha Biblioteca',
       icon: 'library_music',
       link: 'my-library'
     },
@@ -52,7 +52,6 @@ export class NavigationComponent implements OnInit {
     this._userProfileApiService.getUserProfile().subscribe(
       (response: any) => {
         this.userProfile = response;
-        console.log(this.userProfile);
       }
     );
   }

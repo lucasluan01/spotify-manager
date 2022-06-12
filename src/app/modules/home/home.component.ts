@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
     this._browseApiService.getNewReleases(this.offset).subscribe(
       (response: any) => {
         this.newReleases = response.albums;
-        console.log(this.newReleases);
       }
     );
   }

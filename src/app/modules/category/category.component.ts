@@ -37,7 +37,6 @@ export class CategoryComponent implements OnInit {
           this.getCategoryPlaylists();
         }
         this.playlists = [...this.playlists, ...response.playlists.items];
-        console.log(response);
       }
     );
   }

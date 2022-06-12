@@ -20,7 +20,7 @@ export class HeaderBannerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onBackToLibrary() {
+  onGoBackToLibrary() {
     this._location.back();
   }
 }
