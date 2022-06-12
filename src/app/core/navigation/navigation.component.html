@@ -5,8 +5,13 @@
       <app-item-navigation
         [icon]="items.icon"
         [name]="items.name"
-		[link]="items.link"
+        [link]="items.link"
       ></app-item-navigation>
     </ng-container>
+    <div class="user-profile" (click)="onLogout()">
+      <img [src]="userProfile?.images[0].url" alt="" />
+      <span class="nome-usuario">{{ userProfile?.display_name }}</span>
+      <i class="material-icons">logout</i>
+    </div>
   </div>
 </div>

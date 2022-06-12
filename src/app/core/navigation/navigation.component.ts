@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { UserProfileApiService } from '../http/user-profile/user-profile-api.service';
 
 @Component({
   selector: 'app-navigation',
@@ -26,18 +28,37 @@ export class NavigationComponent implements OnInit {
     {
       name: 'Dashboard',
       icon: 'dashboard',
-      link: ''
+      link: 'dashboard'
     },
     {
       name: 'Criar Playlist',
       icon: 'playlist_add',
-      link: ''
+      link: 'new-playlist'
     }
   ]
 
-  constructor() { }
+  userProfile: any;
+
+  constructor(
+    private _authService: AuthenticationService,
+    private _userProfileApiService: UserProfileApiService
+  ) { }
 
   ngOnInit(): void {
+    this.getUserProfile();
+  }
+
+  getUserProfile(): void {
+    this._userProfileApiService.getUserProfile().subscribe(
+      (response: any) => {
+        this.userProfile = response;
+        console.log(this.userProfile);
+      }
+    );
+  }
+
+  onLogout(): void {
+    this._authService.logout();
   }
 
 }

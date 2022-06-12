@@ -28,4 +28,13 @@ export class BrowseApiService {
   getCategoryPlaylists(id: string, offset: number = 0) {
     return this._http.get(`${environment.apiUrl}/${environment.browse}/${environment.categories}/${id}/playlists?country=${environment.country}&limit=50&offset=${offset}`, { headers: this.httpOptions });
   }
+
+  getFeaturedPlaylists(offset: number = 0) {
+    return this._http.get(`${environment.apiUrl}/${environment.browse}/featured-playlists?country=${environment.country}&locale=${environment.locale}&limit=12&offset=${offset}`, { headers: this.httpOptions });
+  }
+
+  getNewReleases(offset: number = 0) {
+    return this._http.get(`${environment.apiUrl}/${environment.browse}/new-releases?country=${environment.country}&limit=12&offset=${offset}`, { headers: this.httpOptions });
+  }
+
 }

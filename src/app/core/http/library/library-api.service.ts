@@ -18,8 +18,8 @@ export class LibraryApiService {
     private _http: HttpClient
   ) { }
 
-  getUserSavedTracks(offset: number = 0) {
-    return this._http.get(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}?limit=1&offset=0`, { headers: this.httpOptions });
+  getUserSavedTracks(offset: number = 0, limit: number = 50) {
+    return this._http.get(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}?offset=${offset}&limit=${limit}`, { headers: this.httpOptions });
   }
 
 }

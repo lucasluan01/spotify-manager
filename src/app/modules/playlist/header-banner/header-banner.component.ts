@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header-banner',
@@ -14,13 +14,13 @@ export class HeaderBannerComponent implements OnInit {
   @Input() owner: string = '';
   
   constructor(
-    private _router: Router
+    private _location: Location
   ) { }
 
   ngOnInit(): void {
   }
 
   onBackToLibrary() {
-    this._router.navigate(['/panel/my-library']);
+    this._location.back();
   }
 }

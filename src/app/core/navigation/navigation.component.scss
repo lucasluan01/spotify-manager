@@ -15,9 +15,40 @@
     font-weight: 500;
 }
 
+.user-profile {
+    margin-top: 50px;
+    padding: 10px;
+    border-top: 1px solid map-get($map: $color-grey, $key: '02dp');
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    * {
+        color: map-get($map: $color-text, $key: 'medium');
+    }
+
+    &:hover {
+        background-color: map-get($map: $color-grey, $key: '02dp');
+
+        * {
+            color: map-get($map: $color-text, $key: 'high');
+        }
+    }
+}
 ul {
     margin: 0;
     padding: 0;
     text-indent: 0;
     list-style-type: 0;
+}
+img {
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+i.material-icons {
+    margin-left: auto;
+
 }

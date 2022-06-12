@@ -40,11 +40,14 @@ export class MyLibraryComponent implements OnInit {
   }
 
   getUserSavedTracks() {
-    this._libraryApiService.getUserSavedTracks().subscribe(
+    this._libraryApiService.getUserSavedTracks(0, 1).subscribe(
       (response: any) => {
         this.numberSavedTracks = response.total;
       }
     );
   }
   
+  onUserSavedTracks() {
+    this._router.navigate(['/panel/playlist', 'saved-tracks']);
+  }
 }

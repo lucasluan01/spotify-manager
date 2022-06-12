@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LibraryApiService } from 'src/app/core/http/library/library-api.service';
 
 import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.service';
 
@@ -14,16 +15,26 @@ export class PlaylistComponent implements OnInit {
   playlist: any;
   tracks: any[] = [];
   offset: number = 0;
+  isUserSavedTrack: boolean = false;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _playlistApiService: PlaylistsApiService
+    private _playlistApiService: PlaylistsApiService,
+    private _libraryApiService: LibraryApiService
   ) { }
 
   ngOnInit(): void {
     this.getIdPlaylist();
-    this.getPlaylist();
-    this.getPlaylistItems();
+
+    this.isUserSavedTrack = this.idPlaylist === "saved-tracks" ? true : false;
+
+    if(this.isUserSavedTrack) {
+      this.getUserSavedTracks();
+    }
+    else {
+      this.getPlaylist();
+      this.getPlaylistItems();
+    }
   }
 
   getIdPlaylist() {
@@ -42,13 +53,24 @@ export class PlaylistComponent implements OnInit {
 
   getPlaylistItems() {
     this._playlistApiService.getPlaylistItems(this.idPlaylist, this.offset).subscribe(
-      (tracks: any) => {
-        if (!!tracks.next) {
-          this.offset += tracks.limit;
+      (response: any) => {
+        if (!!response.next) {
+          this.offset += response.limit;
           this.getPlaylistItems();
         }
-        this.tracks = [...this.tracks, ...tracks.items];
-        
+        this.tracks = [...this.tracks, ...response.items];
+      }
+    );
+  }
+
+  getUserSavedTracks() {
+    this._libraryApiService.getUserSavedTracks(this.offset).subscribe(
+      (response: any) => {
+        if (!!response.next) {
+          this.offset += response.limit;
+          this.getUserSavedTracks();
+        }
+        this.tracks = [...this.tracks, ...response.items];
       }
     );
   }

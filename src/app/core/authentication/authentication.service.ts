@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { authorizationSpotify } from 'src/environments/environment';
 
@@ -8,7 +9,9 @@ import { authorizationSpotify } from 'src/environments/environment';
 
 export class AuthenticationService {
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   getLoginUrl(): string {
     const authEndPoint = `${authorizationSpotify.authEndPoint}?`;
@@ -36,6 +39,11 @@ export class AuthenticationService {
 
   setAccessToken(token: string): void {
     localStorage.setItem('access_token', token);
+  }
+
+  logout(): void {
+    localStorage.removeItem('access_token');
+    this._router.navigate(['/']);
   }
   
 }
