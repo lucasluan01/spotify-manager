@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BrowseApiService } from 'src/app/core/http/browse/browse-api.service';
+import { FeaturedPlaylistsModel } from 'src/app/shared/models/featured-playlists.model';
+import { NewReleasesModel } from 'src/app/shared/models/new-releases.model';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,8 @@ import { BrowseApiService } from 'src/app/core/http/browse/browse-api.service';
 })
 export class HomeComponent implements OnInit {
 
-  featuredPlaylists: any;
-  newReleases: any[] = [];
+  featuredPlaylists!: FeaturedPlaylistsModel["playlists"];
+  newReleases!: NewReleasesModel['albums'];
   offset: number = 0;
   title: string = '';
 
@@ -26,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   getFeaturedPlaylists() {
     this._browseApiService.getFeaturedPlaylists().subscribe(
-      (response: any) => {
+      (response: FeaturedPlaylistsModel) => {
         this.title = response.message;
         this.featuredPlaylists = response.playlists;
       }
@@ -35,7 +37,7 @@ export class HomeComponent implements OnInit {
 
   getNewReleases() {
     this._browseApiService.getNewReleases(this.offset).subscribe(
-      (response: any) => {
+      (response: NewReleasesModel) => {
         this.newReleases = response.albums;
       }
     );

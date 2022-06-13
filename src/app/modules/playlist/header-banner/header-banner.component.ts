@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 })
 export class HeaderBannerComponent implements OnInit {
 
-  @Input() name: string = '';
+  @Input() name: string | undefined = '';
   @Input() totalNumber: number = 0;
   @Input() image: string = '';
   @Input() owner: string = '';

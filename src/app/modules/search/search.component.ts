@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowseApiService } from 'src/app/core/http/browse/browse-api.service';
+import { CategoriesModel } from 'src/app/shared/models/categories.model';
 
 @Component({
   selector: 'app-search',
@@ -8,30 +9,20 @@ import { BrowseApiService } from 'src/app/core/http/browse/browse-api.service';
 })
 export class SearchComponent implements OnInit {
 
-  genres: any[] = [];
   offset: number = 0;
-  categories: any[] = [];
+  categories: CategoriesModel['categories']['items'] = [];
 
   constructor(
     private _browseApi: BrowseApiService
   ) { }
 
   ngOnInit(): void {
-    this.getAvailableGenreSeeds();
     this.getBrowseCategories();
-  }
-
-  getAvailableGenreSeeds(): void {
-    this._browseApi.getAvailableGenreSeeds().subscribe(
-      (data: any) => {
-        this.genres = data.genres;
-      }
-    );
   }
 
   getBrowseCategories(): void {
     this._browseApi.getBrowseCategories(this.offset).subscribe(
-      (data: any) => {
+      (data: CategoriesModel) => {
         if (!!data.categories.next) {
           this.offset += data.categories.limit;
           this.getBrowseCategories();

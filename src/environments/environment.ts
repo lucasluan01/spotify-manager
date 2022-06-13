@@ -20,7 +20,9 @@ export const authorizationSpotify = {
   redirectUri: 'http://localhost:4200/',
   authEndPoint: 'https://accounts.spotify.com/authorize',
   scopes: [
-    'user-library-read'
+    'user-library-read',
+    'user-read-private',
+    'user-read-email',
   ]
 };
 

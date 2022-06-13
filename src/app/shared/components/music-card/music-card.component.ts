@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class MusicCardComponent implements OnInit {
 
   @Input() name: string = '';
-  @Input() image: string = '';
+  @Input() image: string | undefined = '';
   @Input() owner: string = '';
   @Input() id: string = '';
 

@@ -19,6 +19,7 @@ h1 {
 button {
     background-color: map-get($map: $color-text, $key: 'high');
     color: map-get($map: $color-grey, $key: '00dp');
+    border: 0;
     padding: 10px 20px;
     font-weight: 700;
     font-size: 1rem;

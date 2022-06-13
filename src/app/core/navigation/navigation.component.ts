@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { UserProfileApiService } from '../http/user-profile/user-profile-api.service';
 
+import { UserProfileModel } from 'src/app/shared/models/user-profile.model';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -37,7 +39,7 @@ export class NavigationComponent implements OnInit {
     }
   ]
 
-  userProfile: any;
+  userProfile!: UserProfileModel;
 
   constructor(
     private _authService: AuthenticationService,
@@ -50,7 +52,7 @@ export class NavigationComponent implements OnInit {
 
   getUserProfile(): void {
     this._userProfileApiService.getUserProfile().subscribe(
-      (response: any) => {
+      (response: UserProfileModel) => {
         this.userProfile = response;
       }
     );

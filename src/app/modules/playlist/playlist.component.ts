@@ -4,6 +4,9 @@ import { LibraryApiService } from 'src/app/core/http/library/library-api.service
 
 import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.service';
 
+import { PlaylistModel } from './../../shared/models/playlist.model';
+import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
+
 @Component({
   selector: 'app-playlist',
   templateUrl: './playlist.component.html',
@@ -12,8 +15,8 @@ import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.s
 export class PlaylistComponent implements OnInit {
 
   idPlaylist: string = '';
-  playlist: any;
-  tracks: any[] = [];
+  playlist!: PlaylistModel;
+  tracks: PlaylistItemsModel['items'] = [];
   offset: number = 0;
   isUserSavedTrack: boolean = false;
 
@@ -45,7 +48,7 @@ export class PlaylistComponent implements OnInit {
 
   getPlaylist() {
     this._playlistApiService.getPlaylist(this.idPlaylist).subscribe(
-      (playlist: any) => {
+      (playlist: PlaylistModel) => {
         this.playlist = playlist;
       }
     );
@@ -53,7 +56,7 @@ export class PlaylistComponent implements OnInit {
 
   getPlaylistItems() {
     this._playlistApiService.getPlaylistItems(this.idPlaylist, this.offset).subscribe(
-      (response: any) => {
+      (response: PlaylistItemsModel) => {
         if (!!response.next) {
           this.offset += response.limit;
           this.getPlaylistItems();

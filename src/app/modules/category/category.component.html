@@ -2,8 +2,8 @@
 
 <div class="container">
     <ng-container *ngFor="let playlist of playlists">
-        <app-music-card [name]="playlist?.name" [image]="playlist?.images[1]?.url || playlist?.images[0]?.url"
-            [owner]="playlist?.owner?.display_name" [id]="playlist?.id">
+        <app-music-card [name]="playlist.name" [image]="playlist.images[1]?.url || playlist.images[0]?.url"
+            [owner]="playlist.owner.display_name" [id]="playlist.id">
         </app-music-card>
     </ng-container>
 </div>

@@ -2,6 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { BrowseApiService } from 'src/app/core/http/browse/browse-api.service';
+import { PlaylistListModel } from 'src/app/shared/models/playlist-list.model';
+import { CategoryPlaylistModel } from 'src/app/shared/models/category-playlist.model';
 
 @Component({
   selector: 'app-category',
@@ -12,7 +14,7 @@ export class CategoryComponent implements OnInit {
 
   idCategory: string = '';
   offset: number = 0;
-  playlists: any[] = [];
+  playlists: CategoryPlaylistModel['playlists']['items'] = [];
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -31,7 +33,7 @@ export class CategoryComponent implements OnInit {
 
   getCategoryPlaylists() {
     this._browseApiService.getCategoryPlaylists(this.idCategory, this.offset).subscribe(
-      (response: any) => {
+      (response: CategoryPlaylistModel) => {
         if (!!response.playlists.next) {
           this.offset += response.playlists.limit;
           this.getCategoryPlaylists();

@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 
 import { LibraryApiService } from 'src/app/core/http/library/library-api.service';
 import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.service';
+import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
 
+import { PlaylistListModel } from '../../shared/models/playlist-list.model';
 
 @Component({
   selector: 'app-my-library',
@@ -12,7 +14,7 @@ import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.s
 })
 export class MyLibraryComponent implements OnInit {
 
-  playlists: any[] = [];
+  playlists: PlaylistListModel["items"] = [];
   numberSavedTracks: number = 0;
   offset: number = 0;
 
@@ -29,7 +31,7 @@ export class MyLibraryComponent implements OnInit {
 
   getCurrentUserPlaylists() {
     this._playlistsApiService.getCurrentUserPlaylists(this.offset).subscribe(
-      (response: any) => {
+      (response: PlaylistListModel) => {
         if (!!response.next) {
           this.offset += response.limit;
           this.getCurrentUserPlaylists();
@@ -41,7 +43,7 @@ export class MyLibraryComponent implements OnInit {
 
   getUserSavedTracks() {
     this._libraryApiService.getUserSavedTracks(0, 1).subscribe(
-      (response: any) => {
+      (response: PlaylistItemsModel) => {
         this.numberSavedTracks = response.total;
       }
     );
