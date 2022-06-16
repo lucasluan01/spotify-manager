@@ -27,12 +27,13 @@ export class PlaylistsApiService {
     return this._http.get<PlaylistListModel>(`${environment.apiUrl}/${environment.currentUser}/${environment.playlists}?limit=50&offset=${offset}`, { headers: this.httpOptions });
   }
 
+  getPlaylistItems(id: string, offset: number = 0): Observable<PlaylistItemsModel> {
+    return this._http.get<PlaylistItemsModel>(`${environment.apiUrl}/${environment.playlists}/${id}/${environment.tracks}?limit=100&offset=${offset}`, { headers: this.httpOptions });
+  }
+
   getPlaylist(id: string): Observable<PlaylistModel> {
     return this._http.get<PlaylistModel>(`${environment.apiUrl}/${environment.playlists}/${id}`, { headers: this.httpOptions });
   }
 
-  getPlaylistItems(id: string, offset: number = 0): Observable<PlaylistItemsModel> {
-    return this._http.get<PlaylistItemsModel>(`${environment.apiUrl}/${environment.playlists}/${id}/${environment.tracks}?limit=100&offset=${offset}`, { headers: this.httpOptions });
-  }
   
 }

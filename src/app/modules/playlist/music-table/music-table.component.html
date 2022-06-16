@@ -17,18 +17,21 @@
             <td class="title">
                 <img class="image" src="{{ track.track.album.images[1]?.url || track.track.album.images[0]?.url }}"
                     alt="">
-                <div class="aa">
+                <div class="names">
                     <span class="music-title">{{track.track.name}}</span>
                     <br>
-                    <span class="artist">{{track.track.artists[0].name}}</span>
+                    <ng-container *ngFor="let artist of getAllArtists(track.track.artists)">
+                        <span class="artist-name" [routerLink]="['/artist', artist.id]">{{artist.name}}</span>
+                    </ng-container>
                 </div>
             </td>
-            <td class="album"><span>{{ track.track.album.name }}</span></td>
+            <td class="album"><span class="album-name" [routerLink]="['/album', track.track.album.id]"
+                    routerLinkActive="router-link-active">{{ track.track.album.name }}</span></td>
             <td class="added-at"><span>{{ track.added_at | date:"d MMM. 'de' y" }}</span></td>
             <td class="favorite">
                 <i class="material-icons">favorite</i>
             </td>
-            <td class="duration"><span>{{ track.track.duration_ms }}</span></td>
+            <td class="duration"><span>{{ track.track.duration_ms | date:'mm:ss' }}</span></td>
         </tr>
     </tbody>
 </table>

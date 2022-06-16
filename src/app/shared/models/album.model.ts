@@ -5,8 +5,8 @@ export interface AlbumModel {
     // artists: Artist[]
     // available_markets: string[]
     // external_urls: ExternalUrls3
-    // href: string
-    // id: string
+    // href:  
+    id: string
     images: ImageModel[]
     name: string
     // release_date: string

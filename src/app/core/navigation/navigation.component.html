@@ -9,7 +9,9 @@
       ></app-item-navigation>
     </ng-container>
     <div class="user-profile" (click)="onLogout()">
-      <img [src]="userProfile.images[0].url" alt="" />
+      <ng-container>
+        <img [src]="userProfile.images[0].url" alt="" />
+      </ng-container>
       <span class="username">{{ userProfile.display_name }}</span>
       <i class="material-icons">logout</i>
     </div>

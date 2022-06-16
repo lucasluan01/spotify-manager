@@ -53,10 +53,10 @@ export class PlaylistComponent implements OnInit {
       }
     );
   }
-
+  
   getPlaylistItems() {
     this._playlistApiService.getPlaylistItems(this.idPlaylist, this.offset).subscribe(
-      (response: PlaylistItemsModel) => {
+      (response: any) => {
         if (!!response.next) {
           this.offset += response.limit;
           this.getPlaylistItems();

@@ -8,6 +8,21 @@
     display: flex;
     flex-direction: column;
     gap: 60px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    // &::-webkit-scrollbar-track {
+    //     // background: map-get($map: $color-grey, $key: '06dp');
+    // }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: map-get($map: $color-grey, $key: '02dp');
+        border-radius: 20px;
+        // border: 2px solid map-get($map: $color-grey, $key: '06dp');
+    }
 }
 
 .title {

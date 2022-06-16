@@ -11,6 +11,7 @@ export const environment = {
   recommendations: 'recommendations',
   browse: 'browse',
   categories: 'categories',
+  search: 'search',
   country: 'BR',
   locale: 'pt_BR',
 };
@@ -20,9 +21,11 @@ export const authorizationSpotify = {
   redirectUri: 'http://localhost:4200/',
   authEndPoint: 'https://accounts.spotify.com/authorize',
   scopes: [
+    'playlist-read-private',
+    // 'playlist-read-public',
     'user-library-read',
-    'user-read-private',
     'user-read-email',
+    'user-read-private',
   ]
 };
 

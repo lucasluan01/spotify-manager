@@ -21,6 +21,6 @@ export interface TrackModel {
     // track_number: number
     // type: string
     // uri: string
-
+    
     total: number //
 }

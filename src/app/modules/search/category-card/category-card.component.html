@@ -1,4 +1,4 @@
-<div class="category-card" (click)="onPlaylists(idCategory)">
+<div class="category-card" (click)="onPlaylists(idCategory); newMessage()">
     <h3 class="title">{{name | pascalCaseHyphen }}</h3>
     <img class="image" src="{{image}}" alt="">
 </div>

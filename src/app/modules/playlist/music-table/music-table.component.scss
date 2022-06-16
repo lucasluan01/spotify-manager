@@ -44,7 +44,7 @@ td.favorite {
 }
 
 td,
-.aa {
+.names {
     display: block;
     width: 100%;
     overflow: hidden;
@@ -70,4 +70,18 @@ td,
         font-weight: 500;
         color: map-get($map: $color-text, $key: 'high');
     }
+}
+
+span:is(.artist-name, .album-name) {
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: map-get($map: $color-text, $key: 'high');
+    }
+}
+
+span.artist-name:not(:last-child)::after {
+    content: ', ';
+    text-decoration: none;
+    color: map-get($map: $color-text, $key: 'medium');
 }

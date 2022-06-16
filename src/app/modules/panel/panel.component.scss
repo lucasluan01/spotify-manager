@@ -9,10 +9,19 @@
 
 .main-content {
     box-sizing: border-box;
-    // padding: 30px;
     background-color: map-get($map: $color-grey, $key: '00dp');
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: scroll;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-thumb {
+        background-color: map-get($map: $color-grey, $key: '06dp');
+        // border-radius: 20px;
+        border: 5px solid map-get($map: $color-grey, $key: '00dp');
+    }
+
+    &::-webkit-scrollbar {
+        width: 25px;
+    }
 }
