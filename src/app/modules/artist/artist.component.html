@@ -1,0 +1,27 @@
+<header>
+    <a class="btn-backTo" (click)="onBack()">
+        <i class="material-icons">arrow_back_ios</i>
+        <span>voltar</span>
+    </a>
+    
+    <div class="group">
+        <ng-container *ngIf="artist">
+            <img src="{{artist.images[1]?.url || artist.images[0].url}}" alt="" width="175">
+        </ng-container>
+        <ng-container *ngIf="!artist">
+            <div class="image-default">
+                <i class="material-icons">music_note</i>
+            </div>
+        </ng-container>
+        <div class="info">
+            <h2 class="title">{{artist.name}}</h2>
+            <div class="description">
+                <span class="followers"> {{artist.followers.total | number:'1.'}} seguidores</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<app-music-table [tracks]="tracks"></app-music-table>
+
+<app-list-music-card [title]="'Álbuns'" [playlists]="albums"></app-list-music-card>

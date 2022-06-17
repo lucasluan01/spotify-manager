@@ -1,0 +1,81 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { ArtistApiService } from 'src/app/core/http/artist/artist-api.service';
+import { ArtistModel } from 'src/app/shared/models/artist.model';
+import { TrackModel } from 'src/app/shared/models/track.model';
+import { AlbumListModel } from 'src/app/shared/models/album-list.model';
+
+@Component({
+  selector: 'app-artist',
+  templateUrl: './artist.component.html',
+  styleUrls: ['./artist.component.scss']
+})
+export class ArtistComponent implements OnInit {
+
+  id: string = '';
+  artist!: ArtistModel;
+  tracks: TrackModel[] = [];
+  albums!: AlbumListModel;
+
+  constructor(
+    private _artistApiService: ArtistApiService,
+    private _activatedRoute: ActivatedRoute,
+    private _location: Location
+  ) { }
+
+  ngOnInit(): void {
+    this._activatedRoute.params.subscribe(
+      (params: any) => {
+        this.id = params.id;
+        this._artistApiService.getArtist(this.id).subscribe(
+          (artist: ArtistModel) => {
+            this.artist = artist;
+          }
+        );
+      });
+
+    this.getArtistTopTracks();
+    this.getArtistsRelated();
+    this.getArtistAlbums();
+  }
+
+  getArtist(): void {
+    this._artistApiService.getArtist(this.id).subscribe(
+      (response: ArtistModel) => {
+        this.artist = response;
+      }
+    );
+  }
+
+  getArtistTopTracks(): void {
+    this._artistApiService.getArtistsTopTracks(this.id).subscribe(
+      (response: any) => {
+        this.tracks = response.tracks;
+      }
+    );
+  }
+
+  getArtistsRelated(): void {
+    this._artistApiService.getArtistsRelated(this.id).subscribe(
+      (response: any) => {
+        // console.log(response);
+      }
+    );
+  }
+
+  getArtistAlbums(): void {
+    this._artistApiService.getArtistAlbums(this.id).subscribe(
+      (response: AlbumListModel) => {
+        this.albums = response;
+        console.log(this.albums);
+      }
+    );
+  }
+
+  onBack() {
+    this._location.back();
+  }
+
+}

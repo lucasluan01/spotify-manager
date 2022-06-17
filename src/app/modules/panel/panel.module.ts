@@ -12,6 +12,7 @@ import { MyLibraryModule } from '../my-library/my-library.module';
 import { PlaylistModule } from '../playlist/playlist.module';
 import { LoginModule } from '../login/login.module';
 import { CategoryModule } from '../category/category.module';
+import { ArtistModule } from '../artist/artist.module';
 
 
 
@@ -28,6 +29,7 @@ import { CategoryModule } from '../category/category.module';
     PlaylistModule,
     LoginModule,
     CategoryModule,
+    ArtistModule,
     RouterModule.forChild(panelRoutes)
   ],
   exports: [

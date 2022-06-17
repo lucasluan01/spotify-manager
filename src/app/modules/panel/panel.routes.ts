@@ -6,6 +6,7 @@ import { MyLibraryComponent } from '../my-library/my-library.component';
 import { PlaylistComponent } from '../playlist/playlist.component';
 import { SearchComponent } from '../search/search.component';
 import { PanelComponent } from './panel.component';
+import { ArtistComponent } from './../artist/artist.component';
 
 export const panelRoutes: Routes = [
     {
@@ -36,6 +37,10 @@ export const panelRoutes: Routes = [
             {
                 path: 'category/:id',
                 component: CategoryComponent
+            },
+            {
+                path: 'artist/:id',
+                component: ArtistComponent
             }
         ]
     }

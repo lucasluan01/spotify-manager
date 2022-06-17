@@ -21,7 +21,7 @@ table {
     tr {
         display: grid;
         // 60px - coluna favorito
-        grid-template-columns: 30px repeat(2, 1fr) .75fr 58px;
+        grid-template-columns: 30px repeat(2, 1fr) 58px;
         align-items: center;
         justify-items: flex-start;
         padding: 10px 15px;
@@ -51,6 +51,7 @@ td,
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: auto 0;
 }
 
 .title {

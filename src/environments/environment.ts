@@ -11,6 +11,7 @@ export const environment = {
   recommendations: 'recommendations',
   browse: 'browse',
   categories: 'categories',
+  artist: 'artists',
   search: 'search',
   country: 'BR',
   locale: 'pt_BR',

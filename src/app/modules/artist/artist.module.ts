@@ -1,17 +1,15 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ArtistComponent } from './artist.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PlaylistComponent } from './playlist.component';
-import { HeaderBannerComponent } from './header-banner/header-banner.component';
 import { MusicTableComponent } from './music-table/music-table.component';
 
 
 
 @NgModule({
   declarations: [
-    PlaylistComponent,
-    HeaderBannerComponent,
+    ArtistComponent,
     MusicTableComponent
   ],
   imports: [
@@ -20,7 +18,7 @@ import { MusicTableComponent } from './music-table/music-table.component';
     RouterModule
   ],
   exports: [
-    PlaylistComponent
+    ArtistComponent
   ]
 })
-export class PlaylistModule { }
+export class ArtistModule { }

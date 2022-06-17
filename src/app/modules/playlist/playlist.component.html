@@ -1,4 +1,4 @@
-<ng-container *ngIf="!isUserSavedTrack">
+<ng-container *ngIf="!isUserSavedTrack && !!playlist">
   <app-header-banner
     [name]="playlist?.name"
     [totalNumber]="playlist.tracks.total"

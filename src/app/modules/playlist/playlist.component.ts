@@ -6,6 +6,7 @@ import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.s
 
 import { PlaylistModel } from './../../shared/models/playlist.model';
 import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
+import { delay, tap } from 'rxjs';
 
 @Component({
   selector: 'app-playlist',
@@ -31,7 +32,7 @@ export class PlaylistComponent implements OnInit {
 
     this.isUserSavedTrack = this.idPlaylist === "saved-tracks" ? true : false;
 
-    if(this.isUserSavedTrack) {
+    if (this.isUserSavedTrack) {
       this.getUserSavedTracks();
     }
     else {
@@ -53,7 +54,7 @@ export class PlaylistComponent implements OnInit {
       }
     );
   }
-  
+
   getPlaylistItems() {
     this._playlistApiService.getPlaylistItems(this.idPlaylist, this.offset).subscribe(
       (response: any) => {
@@ -64,6 +65,29 @@ export class PlaylistComponent implements OnInit {
         this.tracks = [...this.tracks, ...response.items];
       }
     );
+
+    // this._playlistApiService.getPlaylistItems(this.idPlaylist, this.offset).pipe(
+    //   delay(1000),
+    //   tap((response: any) => {
+    //     response.items.map(
+    //       (item: any) => {
+    //         this._libraryApiService.getCheckIfTrackIsSaved(item.track.id).subscribe(
+    //           (library: any) => {
+    //             item.isSaved = library[0];
+    //           }
+    //         );
+    //       }
+    //     );
+    //   }
+    //   )).subscribe(
+    //     (response: any) => {
+    //       if (!!response.next) {
+    //         this.offset += response.limit;
+    //         this.getPlaylistItems();
+    //       }
+    //       this.tracks = [...this.tracks, ...response.items];
+    //     }
+    //   );
   }
 
   getUserSavedTracks() {

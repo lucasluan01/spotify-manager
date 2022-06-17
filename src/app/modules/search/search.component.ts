@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit {
     if (query) {
       this._searchApiService.getSearch(query).subscribe(
         (response: SearchModel) => {
-          console.log(response);
           this.dataSearch = response;
         }
       );
