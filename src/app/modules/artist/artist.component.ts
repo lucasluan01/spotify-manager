@@ -6,6 +6,9 @@ import { ArtistApiService } from 'src/app/core/http/artist/artist-api.service';
 import { ArtistModel } from 'src/app/shared/models/artist.model';
 import { TrackModel } from 'src/app/shared/models/track.model';
 import { AlbumListModel } from 'src/app/shared/models/album-list.model';
+import { SearchApiService } from 'src/app/core/http/search/search-api.service';
+import { SearchModel } from 'src/app/shared/models/search.model';
+import { PlaylistListModel } from 'src/app/shared/models/playlist-list.model';
 
 @Component({
   selector: 'app-artist',
@@ -18,11 +21,13 @@ export class ArtistComponent implements OnInit {
   artist!: ArtistModel;
   tracks: TrackModel[] = [];
   albums!: AlbumListModel;
+  playlists!: PlaylistListModel;
 
   constructor(
     private _artistApiService: ArtistApiService,
     private _activatedRoute: ActivatedRoute,
-    private _location: Location
+    private _location: Location,
+    private _searchApiService: SearchApiService
   ) { }
 
   ngOnInit(): void {
@@ -32,12 +37,14 @@ export class ArtistComponent implements OnInit {
         this._artistApiService.getArtist(this.id).subscribe(
           (artist: ArtistModel) => {
             this.artist = artist;
+
+            this.getPlaylists();
           }
         );
       });
 
     this.getArtistTopTracks();
-    this.getArtistsRelated();
+    // this.getArtistsRelated();
     this.getArtistAlbums();
   }
 
@@ -69,9 +76,16 @@ export class ArtistComponent implements OnInit {
     this._artistApiService.getArtistAlbums(this.id).subscribe(
       (response: AlbumListModel) => {
         this.albums = response;
-        console.log(this.albums);
       }
     );
+  }
+
+  getPlaylists(): void {
+      this._searchApiService.getSearch(this.artist.name).subscribe(
+        (response: SearchModel) => {
+          this.playlists = response.playlists;
+        }
+      );
   }
 
   onBack() {
