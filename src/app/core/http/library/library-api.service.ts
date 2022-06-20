@@ -10,22 +10,16 @@ import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
 })
 export class LibraryApiService {
 
-  httpOptions = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-  }
-
   constructor(
     private _http: HttpClient
   ) { }
 
   getUserSavedTracks(offset: number = 0, limit: number = 50): Observable<PlaylistItemsModel> {
-    return this._http.get<PlaylistItemsModel>(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}?offset=${offset}&limit=${limit}`, { headers: this.httpOptions });
+    return this._http.get<PlaylistItemsModel>(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}?offset=${offset}&limit=${limit}`);
   }
 
   getCheckIfTrackIsSaved(trackId: string): Observable<any> {
-    return this._http.get<any>(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}/contains?ids=${trackId}`, { headers: this.httpOptions });
+    return this._http.get<any>(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}/contains?ids=${trackId}`);
   }
 
 }

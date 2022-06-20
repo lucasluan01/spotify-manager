@@ -9,17 +9,11 @@ import { UserProfileModel } from 'src/app/shared/models/user-profile.model';
 })
 export class UserProfileApiService {
 
-  httpOptions = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-  }
-  
   constructor(
     private _http: HttpClient
   ) { }
 
   getUserProfile(): Observable<UserProfileModel> {
-    return this._http.get<UserProfileModel>(`${environment.apiUrl}/${environment.currentUser}`, { headers: this.httpOptions });
+    return this._http.get<UserProfileModel>(`${environment.apiUrl}/${environment.currentUser}`);
   }
 }

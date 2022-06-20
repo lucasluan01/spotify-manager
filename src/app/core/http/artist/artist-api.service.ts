@@ -11,30 +11,24 @@ import { environment } from 'src/environments/environment';
 })
 export class ArtistApiService {
 
-  httpOptions = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-  }
-
   constructor(
     private _http: HttpClient
   ) { }
 
   getArtistAlbums(id: string): Observable<any> {
-    return this._http.get<any>(`${environment.apiUrl}/${environment.artist}/${id}/albums`, { headers: this.httpOptions });
+    return this._http.get<any>(`${environment.apiUrl}/${environment.artist}/${id}/albums`);
   }
 
   getArtistsRelated(id: string): Observable<ArtistModel[]> {
-    return this._http.get<any>(`${environment.apiUrl}/${environment.artist}/${id}/related-artists`, { headers: this.httpOptions });
+    return this._http.get<any>(`${environment.apiUrl}/${environment.artist}/${id}/related-artists`);
   }
 
   getArtistsTopTracks(id: string): Observable<any> {
-    return this._http.get(`${environment.apiUrl}/artists/${id}/top-tracks?market=${environment.country}`, { headers: this.httpOptions });
+    return this._http.get(`${environment.apiUrl}/artists/${id}/top-tracks?market=${environment.country}`);
   }
 
   getArtist(id: string): Observable<ArtistModel> {
-    return this._http.get<any>(`${environment.apiUrl}/${environment.artist}/${id}`, { headers: this.httpOptions });
+    return this._http.get<any>(`${environment.apiUrl}/${environment.artist}/${id}`);
   }
 
 }

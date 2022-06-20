@@ -12,30 +12,24 @@ import { NewReleasesModel } from 'src/app/shared/models/new-releases.model';
 })
 export class BrowseApiService {
 
-  httpOptions = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-  }
-
   constructor(
     private _http: HttpClient
   ) { }
 
   getBrowseCategories(offset: number = 0): Observable<CategoriesModel> {
-    return this._http.get<CategoriesModel>(`${environment.apiUrl}/${environment.browse}/categories?country=${environment.country}&locale=${environment.locale}&limit=50&offset=${offset}`, { headers: this.httpOptions });
+    return this._http.get<CategoriesModel>(`${environment.apiUrl}/${environment.browse}/categories?country=${environment.country}&locale=${environment.locale}&limit=50&offset=${offset}`);
   }
 
   getCategoryPlaylists(id: string, offset: number = 0): Observable<CategoryPlaylistModel> {
-    return this._http.get<CategoryPlaylistModel>(`${environment.apiUrl}/${environment.browse}/${environment.categories}/${id}/playlists?country=${environment.country}&limit=50&offset=${offset}`, { headers: this.httpOptions });
+    return this._http.get<CategoryPlaylistModel>(`${environment.apiUrl}/${environment.browse}/${environment.categories}/${id}/playlists?country=${environment.country}&limit=50&offset=${offset}`);
   }
 
   getFeaturedPlaylists(offset: number = 0): Observable<FeaturedPlaylistsModel> {
-    return this._http.get<FeaturedPlaylistsModel>(`${environment.apiUrl}/${environment.browse}/featured-playlists?country=${environment.country}&locale=${environment.locale}&limit=12&offset=${offset}`, { headers: this.httpOptions });
+    return this._http.get<FeaturedPlaylistsModel>(`${environment.apiUrl}/${environment.browse}/featured-playlists?country=${environment.country}&locale=${environment.locale}&limit=12&offset=${offset}`);
   }
 
   getNewReleases(offset: number = 0): Observable<NewReleasesModel> {
-    return this._http.get<NewReleasesModel>(`${environment.apiUrl}/${environment.browse}/new-releases?country=${environment.country}&limit=12&offset=${offset}`, { headers: this.httpOptions });
+    return this._http.get<NewReleasesModel>(`${environment.apiUrl}/${environment.browse}/new-releases?country=${environment.country}&limit=12&offset=${offset}`);
   }
 
 }

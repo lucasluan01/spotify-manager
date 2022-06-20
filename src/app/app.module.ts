@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { appRoutes } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AuthenticationService } from './core/authentication/authentication.service';
 import { PanelModule } from './modules/panel/panel.module';
 import { LoginModule } from './modules/login/login.module';
+import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,12 @@ import { LoginModule } from './modules/login/login.module';
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthenticationService],
+  providers: [
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpTokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

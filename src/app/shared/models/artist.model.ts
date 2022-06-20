@@ -14,6 +14,6 @@ export interface ArtistModel {
 }
 
 interface Followers {
-    href: any
+    // href: any
     total: number
 }

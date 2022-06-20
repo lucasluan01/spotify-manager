@@ -22,6 +22,7 @@ export class ArtistComponent implements OnInit {
   tracks: TrackModel[] = [];
   albums!: AlbumListModel;
   playlists!: PlaylistListModel;
+  artistsRelated: ArtistModel[] = [];
 
   constructor(
     private _artistApiService: ArtistApiService,
@@ -44,7 +45,7 @@ export class ArtistComponent implements OnInit {
       });
 
     this.getArtistTopTracks();
-    // this.getArtistsRelated();
+    this.getArtistsRelated();
     this.getArtistAlbums();
   }
 
@@ -67,7 +68,8 @@ export class ArtistComponent implements OnInit {
   getArtistsRelated(): void {
     this._artistApiService.getArtistsRelated(this.id).subscribe(
       (response: any) => {
-        // console.log(response);
+        this.artistsRelated = response.artists;
+        console.log(this.artistsRelated);
       }
     );
   }

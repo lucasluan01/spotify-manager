@@ -13,26 +13,20 @@ import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
 })
 export class PlaylistsApiService {
 
-  httpOptions = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-  }
-
   constructor(
     private _http: HttpClient
   ) { }
 
   getCurrentUserPlaylists(offset: number = 0): Observable<PlaylistListModel> {
-    return this._http.get<PlaylistListModel>(`${environment.apiUrl}/${environment.currentUser}/${environment.playlists}?limit=50&offset=${offset}`, { headers: this.httpOptions });
+    return this._http.get<PlaylistListModel>(`${environment.apiUrl}/${environment.currentUser}/${environment.playlists}?limit=50&offset=${offset}`);
   }
 
   getPlaylistItems(id: string, offset: number = 0): Observable<PlaylistItemsModel> {
-    return this._http.get<PlaylistItemsModel>(`${environment.apiUrl}/${environment.playlists}/${id}/${environment.tracks}?limit=100&offset=${offset}`, { headers: this.httpOptions });
+    return this._http.get<PlaylistItemsModel>(`${environment.apiUrl}/${environment.playlists}/${id}/${environment.tracks}?limit=100&offset=${offset}`);
   }
 
   getPlaylist(id: string): Observable<PlaylistModel> {
-    return this._http.get<PlaylistModel>(`${environment.apiUrl}/${environment.playlists}/${id}`, { headers: this.httpOptions });
+    return this._http.get<PlaylistModel>(`${environment.apiUrl}/${environment.playlists}/${id}`);
   }
 
   
