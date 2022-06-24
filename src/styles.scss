@@ -20,3 +20,7 @@ body {
 body {
     background-color: map-get($color-grey, '00dp');
 }
+
+.snackbar-error {
+    background-color: red;
+}

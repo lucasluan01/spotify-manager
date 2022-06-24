@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -9,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PanelModule } from './modules/panel/panel.module';
 import { LoginModule } from './modules/login/login.module';
 import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor
     LoginModule,
     PanelModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
   {
