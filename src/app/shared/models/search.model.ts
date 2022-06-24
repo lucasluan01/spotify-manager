@@ -1,11 +1,12 @@
-import { AlbumModel } from "./album.model"
-import { ArtistModel } from "./artist.model"
+
+import { AlbumListModel } from "./album-list.model"
+import { ArtistListModel } from "./artist-list.model"
 import { PlaylistListModel } from "./playlist-list.model"
 import { TrackModel } from "./track.model"
 
 export interface SearchModel {
-    albums: AlbumModel
-    artists: ArtistModel
+    albums: AlbumListModel
+    artists: ArtistListModel
     tracks: TrackModel
     playlists: PlaylistListModel
 }

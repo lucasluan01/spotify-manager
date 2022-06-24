@@ -1,9 +1,8 @@
-import { PlaylistModel } from "./playlist.model"
+import { ArtistModel } from "./artist.model"
 
-
-export interface PlaylistListModel {
+export interface ArtistListModel {
     // href: string
-    items: PlaylistModel[]
+    items: ArtistModel[]
     limit: number
     next: string
     // offset: number

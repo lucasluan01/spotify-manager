@@ -8,6 +8,7 @@
 </ng-container>
 
 <ng-container *ngIf="queryInput.value.trim().length > 0">
-    <app-list-card [title]="'Playlists'" [collection]="dataSearch.playlists"></app-list-card>
-    <app-list-card [title]="'Álbuns'" [collection]="dataSearch.albums"></app-list-card>
+    <app-list-card [title]="'Playlists'" [collection]="dataSearch.playlists.items"></app-list-card>
+    <app-list-card [title]="'Álbuns'" [collection]="dataSearch.albums.items"></app-list-card>
+    <app-list-card [title]="'Artistas'" [collection]="dataSearch.artists.items" [collectionType]="'artists'"></app-list-card>
 </ng-container>

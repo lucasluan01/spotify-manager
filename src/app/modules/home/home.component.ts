@@ -1,8 +1,9 @@
+import { PlaylistListModel } from 'src/app/shared/models/playlist-list.model';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BrowseApiService } from 'src/app/core/http/browse/browse-api.service';
 import { FeaturedPlaylistsModel } from 'src/app/shared/models/featured-playlists.model';
 import { NewReleasesModel } from 'src/app/shared/models/new-releases.model';
+import { AlbumListModel } from 'src/app/shared/models/album-list.model';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +12,13 @@ import { NewReleasesModel } from 'src/app/shared/models/new-releases.model';
 })
 export class HomeComponent implements OnInit {
 
-  featuredPlaylists!: FeaturedPlaylistsModel["playlists"];
-  newReleases!: NewReleasesModel['albums'];
+  featuredPlaylists!: PlaylistListModel['items'];
+  newReleases!: AlbumListModel['items'];
   offset: number = 0;
   title: string = '';
 
   constructor(
-    private _browseApiService: BrowseApiService,
-    private _router: Router
+    private _browseApiService: BrowseApiService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this._browseApiService.getFeaturedPlaylists().subscribe(
       (response: FeaturedPlaylistsModel) => {
         this.title = response.message;
-        this.featuredPlaylists = response.playlists;
+        this.featuredPlaylists = response.playlists.items;
       }
     );
   }
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   getNewReleases() {
     this._browseApiService.getNewReleases(this.offset).subscribe(
       (response: NewReleasesModel) => {
-        this.newReleases = response.albums;
+          this.newReleases = response.albums.items;
       }
     );
   }

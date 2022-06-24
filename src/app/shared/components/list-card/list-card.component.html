@@ -4,12 +4,23 @@
         <a class="list-card__ver-mais">Ver mais</a>
     </div>
     <div class="list-card__items">
-        <ng-container *ngFor="let item of collection?.items">
+        <ng-container *ngIf="collectionType !== 'artists'">
             <app-card 
+            *ngFor="let item of collection"
             [id]="item.id"
             [image]="item.images[1]?.url || item.images[0]?.url"
-            [title]="item.name"
             [description]="item.owner?.display_name || item.artists[0]?.name"
+            [title]="item.name"
+            >
+            </app-card>
+        </ng-container>
+        <ng-container *ngIf="collectionType === 'artists'">
+            <app-card 
+            *ngFor="let item of collection"
+            [id]="item.id"
+            [image]="item.images[1]?.url || item.images[0]?.url"
+            [description]="'Artista'"
+            [title]="item.name"
             >
             </app-card>
         </ng-container>

@@ -8,11 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ListCardComponent implements OnInit {
 
   @Input() title: string = '';
-  @Input() collection: any;
+  @Input() collection!: any;
+  @Input() collectionType: string = ''
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
-
 }

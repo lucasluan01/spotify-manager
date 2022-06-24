@@ -20,8 +20,8 @@ export class ArtistComponent implements OnInit {
   id: string = '';
   artist!: ArtistModel;
   tracks: TrackModel[] = [];
-  albums!: AlbumListModel;
-  playlists!: PlaylistListModel;
+  albums!: AlbumListModel['items'];
+  playlists!: PlaylistListModel['items'];
   artistsRelated: ArtistModel[] = [];
 
   constructor(
@@ -77,17 +77,17 @@ export class ArtistComponent implements OnInit {
   getArtistAlbums(): void {
     this._artistApiService.getArtistAlbums(this.id).subscribe(
       (response: AlbumListModel) => {
-        this.albums = response;
+        this.albums = response.items;
       }
     );
   }
 
   getPlaylists(): void {
-      this._searchApiService.getSearch(this.artist.name).subscribe(
-        (response: SearchModel) => {
-          this.playlists = response.playlists;
-        }
-      );
+    this._searchApiService.getSearch(this.artist.name).subscribe(
+      (response: SearchModel) => {
+        this.playlists = response.playlists.items;
+      }
+    );
   }
 
   onBack() {

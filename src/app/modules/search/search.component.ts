@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { BrowseApiService } from 'src/app/core/http/browse/browse-api.service';
 import { SearchApiService } from 'src/app/core/http/search/search-api.service';
 import { CategoriesModel } from 'src/app/shared/models/categories.model';
@@ -42,6 +41,7 @@ export class SearchComponent implements OnInit {
       this._searchApiService.getSearch(query).subscribe(
         (response: SearchModel) => {
           this.dataSearch = response;
+          console.log(this.dataSearch);
         }
       );
     }

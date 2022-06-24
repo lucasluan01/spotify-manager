@@ -1,5 +1,5 @@
-import { PlaylistListModel } from "./playlist-list.model";
+import { AlbumListModel } from "./album-list.model";
 
 export interface NewReleasesModel {
-    albums: PlaylistListModel
+    albums: AlbumListModel
 }
