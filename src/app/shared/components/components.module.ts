@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MusicCardComponent } from './music-card/music-card.component';
-import { ListMusicCardComponent } from './list-music-card/list-music-card.component';
 import { InputSearchComponent } from './input-search/input-search.component';
+import { CardComponent } from './card/card.component';
+import { ListCardComponent } from './list-card/list-card.component';
 
 
 @NgModule({
   declarations: [
-    MusicCardComponent,
-    ListMusicCardComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    CardComponent,
+    ListCardComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    MusicCardComponent,
-    ListMusicCardComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    ListCardComponent,
+    CardComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,44 @@
+@import 'variables.scss';
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+
+    background: map-get($map: $color-grey, $key: '01dp');
+    border-radius: 5px;
+
+    &:hover {
+        background: map-get($map: $color-grey, $key: '02dp');
+    }
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: inherit;
+        box-shadow: 0 0 10px 2px map-get($map: $color-grey, $key: '00dp');
+    }
+
+    &__title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 700;
+        color: map-get($map: $color-text, $key: 'high');
+    }
+
+    &__description {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: .875rem;
+        color: map-get($map: $color-text, $key: 'medium');
+    }
+}

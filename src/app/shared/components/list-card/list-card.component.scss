@@ -1,0 +1,38 @@
+@import 'variables.scss';
+
+.list-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    &__ver-mais {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: map-get($map: $color-text, $key: 'medium');
+        font-size: .875rem;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+            color: map-get($map: $color-text, $key: 'high');
+        }
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+        gap: 20px;
+    }
+
+}

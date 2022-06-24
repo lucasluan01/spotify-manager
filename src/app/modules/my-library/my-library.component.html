@@ -4,13 +4,9 @@
     <div class="description">{{numberSavedTracks}} músicas curtidas</div>
   </div>
 
-  <ng-container *ngFor="let playlist of playlists">
-    <app-music-card
-      [name]="playlist.name"
-      [image]="playlist.images[1]?.url || playlist.images[0]?.url"
-      [owner]="playlist.owner.display_name"
-      [id]="playlist.id"
-    >
-    </app-music-card>
+  <ng-container *ngFor="let item of playlists">
+    <app-card [id]="item.id" [image]="item.images[1]?.url || item.images[0]?.url" [title]="item.name"
+      [description]="item.owner.display_name">
+    </app-card>
   </ng-container>
 </div>

@@ -1,0 +1,17 @@
+<div class="list-card">
+    <div class="list-card__top">
+        <h2 class="list-card__title">{{title}}</h2>
+        <a class="list-card__ver-mais">Ver mais</a>
+    </div>
+    <div class="list-card__items">
+        <ng-container *ngFor="let item of collection?.items">
+            <app-card 
+            [id]="item.id"
+            [image]="item.images[1]?.url || item.images[0]?.url"
+            [title]="item.name"
+            [description]="item.owner?.display_name || item.artists[0]?.name"
+            >
+            </app-card>
+        </ng-container>
+    </div>
+</div>
