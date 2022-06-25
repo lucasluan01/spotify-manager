@@ -24,8 +24,6 @@
 
 <app-music-table [tracks]="tracks"></app-music-table>
 
-<app-list-card [title]="'Playlists'" [collection]="playlists"></app-list-card>
-
-<app-list-card [title]="'Álbuns'" [collection]="albums"></app-list-card>
-
-<app-list-card [title]="'Artistas Relacionados'" [collection]="artistsRelated" [collectionType]="'artists'"></app-list-card>
+<app-list-card [title]="'Playlists'" [collection]="playlists" [collectionType]="'playlist'"></app-list-card>
+<app-list-card [title]="'Álbuns'" [collection]="albums" [collectionType]="'album'"></app-list-card>
+<app-list-card [title]="'Artistas Relacionados'" [collection]="artistsRelated" [collectionType]="'artist'"></app-list-card>

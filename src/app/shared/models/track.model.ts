@@ -16,7 +16,7 @@ export interface TrackModel {
     // is_local: boolean
     name: string
     // popularity: number
-    // preview_url?: string
+    // preview_url: string
     // track: boolean
     // track_number: number
     // type: string

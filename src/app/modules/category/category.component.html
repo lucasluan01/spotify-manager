@@ -3,7 +3,7 @@
 <div class="container">
     <ng-container *ngFor="let playlist of playlists">
         <app-card [title]="playlist.name" [image]="playlist.images[1]?.url || playlist.images[0]?.url"
-            [description]="playlist.owner.display_name" [id]="playlist.id">
+            [description]="playlist.owner.display_name" [id]="playlist.id" [collectionType]="'playlist'">
         </app-card>
     </ng-container>
 </div>

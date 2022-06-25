@@ -12,6 +12,8 @@ export class CardComponent implements OnInit {
   @Input() image: string | undefined = '';
   @Input() title: string = '';
   @Input() description: string = '';
+  @Input() collectionType: string = '';
+
 
   constructor(
     private _router: Router
@@ -21,7 +23,7 @@ export class CardComponent implements OnInit {
   }
 
   onPlaylist(id: string) {
-    this._router.navigate(['/panel/playlist', id])
+    this._router.navigate([`/panel/${this.collectionType}`, id])
   }
 
 }

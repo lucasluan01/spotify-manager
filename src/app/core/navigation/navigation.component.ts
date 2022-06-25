@@ -23,6 +23,11 @@ export class NavigationComponent implements OnInit {
       link: 'search'
     },
     {
+      name: 'Tocadas Recentemente',
+      icon: 'history',
+      link: 'recently-played'
+    },
+    {
       name: 'Minha Biblioteca',
       icon: 'library_music',
       link: 'my-library'

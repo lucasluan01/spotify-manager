@@ -38,15 +38,13 @@ export class ArtistComponent implements OnInit {
         this._artistApiService.getArtist(this.id).subscribe(
           (artist: ArtistModel) => {
             this.artist = artist;
-
             this.getPlaylists();
+            this.getArtistTopTracks();
+            this.getArtistsRelated();
+            this.getArtistAlbums();
           }
         );
       });
-
-    this.getArtistTopTracks();
-    this.getArtistsRelated();
-    this.getArtistAlbums();
   }
 
   getArtist(): void {
@@ -69,7 +67,6 @@ export class ArtistComponent implements OnInit {
     this._artistApiService.getArtistsRelated(this.id).subscribe(
       (response: any) => {
         this.artistsRelated = response.artists;
-        console.log(this.artistsRelated);
       }
     );
   }

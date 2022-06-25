@@ -13,6 +13,7 @@ export const environment = {
   categories: 'categories',
   artist: 'artists',
   search: 'search',
+  player: 'player',
   country: 'BR',
   locale: 'pt_BR',
 };

@@ -1,3 +1,4 @@
+import { RecentlyPlayedComponent } from './../recently-played/recently-played.component';
 import { Routes } from '@angular/router';
 import { CategoryComponent } from '../category/category.component';
 
@@ -25,6 +26,10 @@ export const panelRoutes: Routes = [
             {
                 path: 'search',
                 component: SearchComponent
+            },
+            {
+                path: 'recently-played',
+                component: RecentlyPlayedComponent
             },
             {
                 path: 'my-library',
