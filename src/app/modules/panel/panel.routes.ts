@@ -8,6 +8,7 @@ import { PlaylistComponent } from '../playlist/playlist.component';
 import { SearchComponent } from '../search/search.component';
 import { PanelComponent } from './panel.component';
 import { ArtistComponent } from './../artist/artist.component';
+import { AlbumComponent } from '../album/album.component';
 
 export const panelRoutes: Routes = [
     {
@@ -46,6 +47,10 @@ export const panelRoutes: Routes = [
             {
                 path: 'artist/:id',
                 component: ArtistComponent
+            },
+            {
+                path: 'album/:id',
+                component: AlbumComponent
             }
         ]
     }

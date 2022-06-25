@@ -3,7 +3,6 @@
         <tr>
             <th class="number">#</th>
             <th>Título</th>
-            <th>Álbum</th>
             <th class="duration">
                 <i class="material-icons">access_time</i>
             </th>
@@ -14,13 +13,14 @@
             <td class="number"><span>{{i + 1}}</span></td>
 
             <td class="title">
-                <img class="image" src="{{ track.album.images[1]?.url || track.album.images[0]?.url }}" alt="">
                 <div class="names">
                     <span class="music-title">{{track.name}}</span>
+                    <br>
+                    <ng-container *ngFor="let artist of getAllArtists(track.artists)">
+                        <span class="artist-name" [routerLink]="['/panel/artist', artist.id]">{{artist.name}}</span>
+                    </ng-container>
                 </div>
             </td>
-            <td class="album"><span class="album-name" [routerLink]="['/panel/album', track.album.id]"
-                routerLinkActive="router-link-active">{{ track.album.name }}</span></td>
             <td class="duration"><span>{{ track.duration_ms | date:'mm:ss' }}</span></td>
         </tr>
     </tbody>

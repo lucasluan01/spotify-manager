@@ -13,6 +13,7 @@ import { PlaylistModule } from '../playlist/playlist.module';
 import { LoginModule } from '../login/login.module';
 import { CategoryModule } from '../category/category.module';
 import { ArtistModule } from '../artist/artist.module';
+import { AlbumModule } from '../album/album.module';
 
 
 
@@ -30,6 +31,7 @@ import { ArtistModule } from '../artist/artist.module';
     LoginModule,
     CategoryModule,
     ArtistModule,
+    AlbumModule,
     RouterModule.forChild(panelRoutes)
   ],
   exports: [

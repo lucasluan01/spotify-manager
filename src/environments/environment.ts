@@ -14,6 +14,7 @@ export const environment = {
   artist: 'artists',
   search: 'search',
   player: 'player',
+  albums: 'albums',
   country: 'BR',
   locale: 'pt_BR',
 };
@@ -28,6 +29,7 @@ export const authorizationSpotify = {
     'user-library-read',
     'user-read-email',
     'user-read-private',
+    'user-read-recently-played',
   ]
 };
 

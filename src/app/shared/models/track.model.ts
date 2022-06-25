@@ -1,5 +1,6 @@
 import { AlbumModel } from "./album.model"
 import { ArtistModel } from "./artist.model"
+import { ImageModel } from "./image.model"
 
 export interface TrackModel {
     album: AlbumModel
@@ -22,5 +23,6 @@ export interface TrackModel {
     // type: string
     // uri: string
     
+    images: ImageModel[]
     total: number //
 }
