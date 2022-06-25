@@ -1,7 +1,7 @@
 import { TrackModel } from "./track.model"
 
 export interface RecentlyPlayedItemsModel {
-    // items: Item[]
+    items: Item[]
     // next: string
     // cursors: Cursors
     // limit: number
@@ -9,8 +9,8 @@ export interface RecentlyPlayedItemsModel {
 }
 
 interface Item {
-    // track: TrackModel
-    // played_at: string
+    track: TrackModel
+    played_at: string
     // context: any
 }
 

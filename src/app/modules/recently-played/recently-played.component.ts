@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerApiService } from 'src/app/core/http/player/player-api.service';
+import { RecentlyPlayedItemsModel } from 'src/app/shared/models/recently-played-items.model';
 import { TrackModel } from 'src/app/shared/models/track.model';
 
 @Component({
@@ -9,7 +10,7 @@ import { TrackModel } from 'src/app/shared/models/track.model';
 })
 export class RecentlyPlayedComponent implements OnInit {
 
-  tracks: TrackModel[] = [];
+  recentlyPlayed: RecentlyPlayedItemsModel['items'] = [];
 
   constructor(
     private __playerApi: PlayerApiService
@@ -21,8 +22,8 @@ export class RecentlyPlayedComponent implements OnInit {
 
   getRecentlyPlayedTracks(): void {
     this.__playerApi.getRecentlyPlayedTracks().subscribe(
-      (response: any) => {
-        this.tracks = response.items;
+      (response: RecentlyPlayedItemsModel) => {
+        this.recentlyPlayed = response.items;
     });
   }
 
