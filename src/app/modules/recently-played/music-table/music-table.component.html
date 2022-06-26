@@ -15,7 +15,7 @@
         <tr *ngFor="let track of tracks, let i = index">
             <td class="number"><span>{{i + 1}}</span></td>
             <td class="title">
-                <img class="image" src="{{ track.track.album.images[1]?.url || track.track.album.images[0]?.url }}"
+                <img (click)="onPlayTrack(track)" class="image" src="{{ track.track.album.images[1]?.url || track.track.album.images[0]?.url }}"
                     alt="">
                 <div class="names">
                     <span class="music-title">{{track.track.name}}</span>

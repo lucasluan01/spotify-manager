@@ -1,4 +1,3 @@
-import { RecentlyPlayedModule } from './modules/recently-played/recently-played.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -11,6 +10,7 @@ import { PanelModule } from './modules/panel/panel.module';
 import { LoginModule } from './modules/login/login.module';
 import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RecentlyPlayedModule } from './modules/recently-played/recently-played.module';
 
 @NgModule({
   declarations: [

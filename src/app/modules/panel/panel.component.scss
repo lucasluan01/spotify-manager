@@ -1,13 +1,21 @@
 @import 'variables.scss';
 
 :host {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     display: grid;
-    grid-template: 100vh / max-content 1fr;
+    grid-template-areas: "navigation main-content" 
+                         "player-track player-track";
+    grid-template: 1fr auto / auto 1fr;
+}
+
+.navigation {
+    grid-area: "navigation";
 }
 
 .main-content {
+    grid-area: "main-content";
+
     box-sizing: border-box;
     background-color: map-get($map: $color-grey, $key: '00dp');
     display: flex;
@@ -24,4 +32,9 @@
     &::-webkit-scrollbar {
         width: 25px;
     }
+}
+
+.player-track {
+    grid-area: "player-track";
+    grid-column: span 2;
 }

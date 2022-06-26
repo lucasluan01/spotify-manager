@@ -1,0 +1,47 @@
+<div *ngIf="track" class="player-track">
+
+    <audio id="player" #playerTrack (timeupdate)="progress.value = playerTrack.currentTime.toString()"
+        (ended)="onEnded(playerTrack)" src="{{urlCurrentAudio}}">
+    </audio>
+
+    <div class="info">
+        <img class="info__image" src="{{ track.album.images[1]?.url || track.album.images[0]?.url}}" alt="">
+        <div class="names">
+            <span class="info__song-title">{{track.name}}</span>
+            <br>
+            <ng-container *ngFor="let artist of getAllArtists(track.artists)">
+                <span class="info__artist-name" [routerLink]="['/panel/artist', artist.id]">{{artist.name}}</span>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="controls__buttons">
+            <button (click)="onPlayPause(playerTrack)">
+                <i *ngIf="!isPlaying" class="material-icons material-icons--lg">play_circle_filled</i>
+                <i *ngIf="isPlaying" class="material-icons material-icons--lg">pause_circle</i>
+            </button>
+            <button (click)="onRepeat(playerTrack)">
+                <i class="material-icons" [ngClass]="{'material-icons--active': isRepeat === true}">repeat</i>
+            </button>
+        </div>
+        <div class="controls__progress">
+            <span>{{+progress.value * 1000 | date:'mm:ss'}}</span>
+            <input class="control-rather" type="range" value="0" min="0" max="{{Math.trunc(playerTrack.duration)}}" #progress
+                (input)="onCurrentTime(playerTrack, progress.value)">
+            <span>{{playerTrack.duration * 1000 | date:'mm:ss'}}</span>
+        </div>
+    </div>
+
+    <div class="volume">
+        <button (click)="onMuted(playerTrack)">
+            <ng-container *ngIf="!isMuted">
+                <i *ngIf="+volume.value >= 66" class="material-icons">volume_up</i>
+                <i *ngIf="+volume.value >= 33 && +volume.value < 66" class="material-icons">volume_down</i>
+                <i *ngIf="+volume.value > 0 && +volume.value < 33" class="material-icons">volume_mute</i>
+            </ng-container>
+            <i *ngIf="+volume.value === 0 || isMuted" class="material-icons">volume_off</i>
+        </button>
+        <input class="control-rather control-rather--sm" type="range" min="0" max="100" value="50" #volume (input)="onVolume(playerTrack, +volume.value)" />
+    </div>
+</div>

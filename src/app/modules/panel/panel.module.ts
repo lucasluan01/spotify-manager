@@ -1,3 +1,4 @@
+import { PlayerTrackPreviewModule } from './../player-track-preview/player-track-preview.module';
 import { panelRoutes } from './panel.routes';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -32,6 +33,7 @@ import { AlbumModule } from '../album/album.module';
     CategoryModule,
     ArtistModule,
     AlbumModule,
+    PlayerTrackPreviewModule,
     RouterModule.forChild(panelRoutes)
   ],
   exports: [
