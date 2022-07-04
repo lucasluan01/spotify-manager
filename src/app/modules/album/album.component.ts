@@ -1,4 +1,3 @@
-import { AlbumItemsModel } from './../../shared/models/album-items.model';
 import { AlbumApiService } from './../../core/http/album/album-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -31,22 +30,16 @@ export class AlbumComponent implements OnInit {
         this.getAlbum();
       });
 
-    this.getAlbumTracks();
+    // this.getAlbumTracks();
   }
 
   getAlbum() {
     this._albumApiService.getAlbum(this.id).subscribe(
       (response: AlbumModel) => {
         this.album = response;
+        this.tracks = response.tracks.items;
       }
     );
-  }
-
-  getAlbumTracks() {
-    this._albumApiService.getAlbumTracks(this.id, this.offset).subscribe(
-      (response: AlbumItemsModel) => {
-        this.tracks = response.items;
-      });
   }
 
   onBack() {

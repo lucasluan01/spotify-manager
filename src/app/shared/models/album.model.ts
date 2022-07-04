@@ -1,11 +1,16 @@
 import { ImageModel } from "./image.model";
+import { TrackModel } from "./track.model";
 
 export interface AlbumModel {
     // album_type: string
     // artists: Artist[]
     // available_markets: string[]
+    // copyrights: Copyright[]
     // external_urls: ExternalUrls3
-    // href:  
+    // href:  string
+    tracks: {
+        items: TrackModel[]
+    }
     id: string
     images: ImageModel[]
     name: string
@@ -15,3 +20,8 @@ export interface AlbumModel {
     // type: string
     // uri: string
 }
+
+// interface Copyright {
+//     text: string
+//     type: string
+// }

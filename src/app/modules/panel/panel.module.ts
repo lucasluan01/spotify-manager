@@ -1,4 +1,3 @@
-import { PlayerTrackPreviewModule } from './../player-track-preview/player-track-preview.module';
 import { panelRoutes } from './panel.routes';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -15,6 +14,8 @@ import { LoginModule } from '../login/login.module';
 import { CategoryModule } from '../category/category.module';
 import { ArtistModule } from '../artist/artist.module';
 import { AlbumModule } from '../album/album.module';
+import { PlayerTrackPreviewModule } from './../player-track-preview/player-track-preview.module';
+import { CreatePlaylistModule } from './../create-playlist/create-playlist.module';
 
 
 
@@ -34,6 +35,7 @@ import { AlbumModule } from '../album/album.module';
     ArtistModule,
     AlbumModule,
     PlayerTrackPreviewModule,
+    CreatePlaylistModule,
     RouterModule.forChild(panelRoutes)
   ],
   exports: [

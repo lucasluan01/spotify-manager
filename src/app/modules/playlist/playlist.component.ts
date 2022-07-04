@@ -6,7 +6,6 @@ import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.s
 
 import { PlaylistModel } from './../../shared/models/playlist.model';
 import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
-import { delay, tap } from 'rxjs';
 
 @Component({
   selector: 'app-playlist',
@@ -24,7 +23,7 @@ export class PlaylistComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _playlistApiService: PlaylistsApiService,
-    private _libraryApiService: LibraryApiService
+    private _libraryApiService: LibraryApiService,
   ) { }
 
   ngOnInit(): void {

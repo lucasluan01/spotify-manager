@@ -40,7 +40,7 @@ export class NavigationComponent implements OnInit {
     {
       name: 'Criar Playlist',
       icon: 'playlist_add',
-      link: 'new-playlist'
+      link: 'create-playlist'
     }
   ]
 

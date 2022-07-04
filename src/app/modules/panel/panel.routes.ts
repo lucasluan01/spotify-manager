@@ -1,6 +1,4 @@
-import { RecentlyPlayedComponent } from './../recently-played/recently-played.component';
 import { Routes } from '@angular/router';
-import { CategoryComponent } from '../category/category.component';
 
 import { HomeComponent } from '../home/home.component';
 import { MyLibraryComponent } from '../my-library/my-library.component';
@@ -9,6 +7,9 @@ import { SearchComponent } from '../search/search.component';
 import { PanelComponent } from './panel.component';
 import { ArtistComponent } from './../artist/artist.component';
 import { AlbumComponent } from '../album/album.component';
+import { CreatePlaylistComponent } from './../create-playlist/create-playlist.component';
+import { RecentlyPlayedComponent } from './../recently-played/recently-played.component';
+import { CategoryComponent } from '../category/category.component';
 
 export const panelRoutes: Routes = [
     {
@@ -35,6 +36,10 @@ export const panelRoutes: Routes = [
             {
                 path: 'my-library',
                 component: MyLibraryComponent
+            },
+            {
+                path: 'create-playlist',
+                component: CreatePlaylistComponent
             },
             {
                 path: 'playlist/:id',

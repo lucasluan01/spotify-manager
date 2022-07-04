@@ -9,12 +9,6 @@ import { ArtistModel } from 'src/app/shared/models/artist.model';
 })
 export class MusicTableComponent implements OnInit {
 
-  // @Input() image: string = '';
-  // @Input() name: string = '';
-  // @Input() album: string = '';
-  // @Input() addedAt: string = '';
-  // @Input() duration: number = 0;
-
   @Input() tracks: any;
 
   constructor(

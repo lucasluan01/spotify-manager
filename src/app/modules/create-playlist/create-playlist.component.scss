@@ -1,0 +1,45 @@
+@import 'variables.scss';
+
+:host {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding: 30px;
+    position: relative;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.add-playlist {
+    background: #1E1E1E;
+    border-radius: 5px;
+    width: 205px;
+    height: 279px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: map-get($map: $color-grey, $key: '02dp');
+        cursor: pointer;
+    }
+    
+    * {
+        color: map-get($map: $color-text, $key: 'medium');
+    }
+
+    &__icon {
+        font-size: 4rem;
+    }
+
+    &__description {
+        font-size: .875rem;
+    }
+}
