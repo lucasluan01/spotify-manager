@@ -1,0 +1,7 @@
+<div class="card" (click)="onColletionSelected()">
+    <img src="{{image}}" alt="" class="card__image" width="175">
+    <h3 class="card__title">{{title}}</h3>
+    <span class="card__description">{{description}}</span>
+</div>
+
+<button *ngIf="isDelete" class="btn-delete" (click)="onDeleteCollectionSelected()">Remover</button>

@@ -1,6 +1,26 @@
 <h2 class="title">Gerar a partir de outras playlists:</h2>
 
-<div class="add-playlist">
-    <i class="material-icons add-playlist__icon">add</i>
-    <span class="add-playlist__description">Adicionar playlist</span>
+<div class="list-card">
+    <div class="list-card__items">
+        <app-preview-card *ngFor="let item of arraySelectedCollection" [id]="item.id" [image]="item.image"
+            [title]="item.title" [description]="item.description" [collectionType]="collectionType" [isDelete]="true">
+        </app-preview-card>
+        <div class="add-playlist" (click)="onOpenDialog()">
+            <i class="material-icons add-playlist__icon">add</i>
+            <span class="add-playlist__description">Adicionar playlist</span>
+        </div>
+    </div>
 </div>
+
+<div class="date-selection">
+    <ng-container *ngFor="let item of releaseDates, let index">
+        <input type="checkbox" id="yearCheckbox {{index}}" class="date-selection__item"/>
+        <label for="yearCheckbox {{index}}" class="date-selection__label">{{index}}</label>
+    </ng-container>
+</div>
+
+<!-- <input type="checkbox" id="myCheckbox" />
+    <label for="myCheckbox"> One</label>
+    
+    <input type="checkbox" id="myCheckbox2" />
+    <label for="myCheckbox2"> two</label> -->

@@ -19,8 +19,8 @@
 .add-playlist {
     background: #1E1E1E;
     border-radius: 5px;
-    width: 205px;
-    height: 279px;
+    width: 220px;
+        height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,5 +41,48 @@
 
     &__description {
         font-size: .875rem;
+    }
+}
+.list-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+        gap: 20px;
+    }
+
+}
+
+.date-selection {
+
+    display: flex;
+    gap: 10px;
+    // max-width: inherit;
+    flex-wrap: wrap;
+
+    &__item {
+        display: none;
+
+        &:checked+.date-selection__label {
+            transition: all 100ms ease;
+            background-color: map-get($map: $color-text, $key: 'high');
+            border: 2px solid map-get($map: $color-text, $key: 'high');
+            color: map-get($map: $color-grey, $key: '00dp');
+        }
+    }
+
+    &__label {
+        cursor: pointer;
+        border-radius: 50px;
+        background-color: map-get($map: $color-grey, $key: '00dp');
+        border: solid 2px map-get($map: $color-grey, $key: '03dp');
+        transition: all 100ms ease;
+        padding: 8px 16px;
+        font-weight: 700;
+        font-size: .875rem;
+        user-select: none;
     }
 }

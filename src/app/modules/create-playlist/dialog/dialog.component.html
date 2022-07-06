@@ -1,0 +1,31 @@
+<div class="search">
+    <i class="material-icons search__icon">search</i>
+    <input class="search__query" #queryInput type="text" placeholder="Buscar por lorem ou ipsum"
+        (keyup)="onSearch(queryInput.value.trim())">
+</div>
+
+<ng-container *ngIf="queryInput.value.trim().length > 0">
+    <div class="list-card">
+        <div class="list-card__top">
+            <h2 class="list-card__title">Playlists</h2>
+        </div>
+        <div class="list-card__items">
+            <app-preview-card *ngFor="let item of dataSearch.playlists.items" [id]="item.id"
+                [image]="item.images[1]?.url || item.images[0]?.url" [description]="item.owner.display_name"
+                [title]="item.name" [collectionType]="'playlist'">
+            </app-preview-card>
+        </div>
+    </div>
+    <div class="list-card">
+        <div class="list-card__top">
+            <h2 class="list-card__title">Álbuns</h2>
+        </div>
+        <div class="list-card__items">
+            <app-preview-card *ngFor="let item of dataSearch.albums.items" [id]="item.id"
+                [image]="item.images[1]?.url || item.images[0]?.url" [description]="item.artists[0].name"
+                [title]="item.name" [collectionType]="'album'"
+            >
+            </app-preview-card>
+        </div>
+    </div>
+</ng-container>

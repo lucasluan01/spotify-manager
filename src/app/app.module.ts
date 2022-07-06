@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { appRoutes } from './app.routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -11,6 +13,7 @@ import { LoginModule } from './modules/login/login.module';
 import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecentlyPlayedModule } from './modules/recently-played/recently-played.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { RecentlyPlayedModule } from './modules/recently-played/recently-played.
   ],
   imports: [
     BrowserModule,
+    MatIconModule,
     LoginModule,
     PanelModule,
     HttpClientModule,
     BrowserAnimationsModule,
     RecentlyPlayedModule,
+    MatDialogModule,
+    MatChipsModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [
@@ -30,7 +36,12 @@ import { RecentlyPlayedModule } from './modules/recently-played/recently-played.
     provide: HTTP_INTERCEPTORS,
     useClass: HttpTokenInterceptor,
     multi: true
-  }],
+    },
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

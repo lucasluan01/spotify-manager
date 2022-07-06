@@ -14,16 +14,16 @@ export class CardComponent implements OnInit {
   @Input() description: string = '';
   @Input() collectionType: string = '';
 
-
   constructor(
-    private _router: Router
+    private _router: Router,
   ) { }
 
   ngOnInit(): void {
+
   }
 
   onPlaylist(id: string) {
-    this._router.navigate([`/panel/${this.collectionType}`, id])
+      this._router.navigate([`/panel/${this.collectionType}`, id]);
   }
 
 }

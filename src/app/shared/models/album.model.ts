@@ -1,9 +1,10 @@
+import { ArtistModel } from "./artist.model";
 import { ImageModel } from "./image.model";
 import { TrackModel } from "./track.model";
 
 export interface AlbumModel {
     // album_type: string
-    // artists: Artist[]
+    artists: ArtistModel[]
     // available_markets: string[]
     // copyrights: Copyright[]
     // external_urls: ExternalUrls3

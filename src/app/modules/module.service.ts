@@ -10,9 +10,11 @@ export class ModuleService {
 
   private messageSource = new BehaviorSubject('default message');
   private playerTrack$ = new BehaviorSubject<any>({});
+  private selectedCollection$ = new BehaviorSubject<any>(null);
 
   currentMessage = this.messageSource.asObservable();
   currentTrack = this.playerTrack$.asObservable();
+  selectedCollection = this.selectedCollection$.asObservable();
 
   constructor() { }
 
@@ -22,6 +24,10 @@ export class ModuleService {
 
   setPlayerTrack(track: TrackModel) {
     this.playerTrack$.next(track);
-    console.log(track);
   }
+
+  changeSelectedCollection(collection: any) {
+    this.selectedCollection$.next(collection);
+  }
+
 }

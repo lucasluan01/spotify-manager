@@ -28,7 +28,6 @@ export class PlayerTrackPreviewComponent implements OnInit {
       (track) => {
         this.track = track.track;
         this.urlCurrentAudio = track.track.preview_url;
-        console.log(this.urlCurrentAudio);
       });
   }
 
@@ -69,7 +68,6 @@ export class PlayerTrackPreviewComponent implements OnInit {
   }
 
   onEnded(player: HTMLAudioElement) {
-    console.log('ended');
     this.isPlaying = false;
     player.currentTime = 0;
   }
