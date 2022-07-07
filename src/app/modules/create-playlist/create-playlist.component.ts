@@ -30,6 +30,8 @@ export class CreatePlaylistComponent implements OnInit {
   ngOnInit(): void {
     this._moduleService.selectedCollection.subscribe(
       (selectedCollection: any) => {
+        this.releaseDates = [];
+
         if (selectedCollection.isAdd) {
           if (selectedCollection !== null && !this.arraySelectedCollection.some((item: any) => item.id === selectedCollection.id)) {
             this.arraySelectedCollection.push(selectedCollection);
