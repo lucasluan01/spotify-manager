@@ -19,24 +19,16 @@ export class CategoryCardComponent implements OnInit {
   subscription!: Subscription;
   
   constructor(
-    private _router: Router,
-    private _moduleService: ModuleService
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this._moduleService.currentMessage.subscribe(message => this.message = message)
+    
   }
 
   onPlaylists(id: string) {
+    sessionStorage.setItem('categoryName', this.name);
     this._router.navigate(['/panel/category', id])
-  }
-
-  newMessage() {
-    this._moduleService.changeMessage(this.name);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
 }
