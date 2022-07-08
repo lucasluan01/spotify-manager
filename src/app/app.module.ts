@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatChipsModule } from '@angular/material/chips';
 
 import { appRoutes } from './app.routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -14,6 +13,8 @@ import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecentlyPlayedModule } from './modules/recently-played/recently-played.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     RecentlyPlayedModule,
     MatDialogModule,
-    MatChipsModule,
+    MatSnackBarModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [
