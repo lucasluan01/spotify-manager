@@ -1,0 +1,29 @@
+<table class="table">
+    <thead>
+        <tr class="header-row">
+            <th class="header-row--end">#</th>
+            <th>Título</th>
+            <th>Álbum</th>
+            <th>Reproduzido em</th>
+            <th class="header-row--end"><i class="material-icons">access_time</i></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="body-row" *ngFor="let track of tracks, let i = index">
+            <td class="body-row--end"><span>{{i + 1}}</span></td>
+            <td class="body-row__col-title">
+                <img (click)="onPlayTrack(track)" class="col-title__image" src="{{ track.album.images[1]?.url || track.album.images[0]?.url }}" alt="">
+                <div class="col-title__description">
+                    <span class="col-title__name-song">{{track.name}}</span>
+                    <br>
+                    <ng-container *ngFor="let artist of getAllArtists(track.artists)">
+                        <span class="col-title__artist-name" [routerLink]="['/panel/artist', artist.id]">{{artist.name}}</span>
+                    </ng-container>
+                </div>
+            </td>
+            <td class="album"><span class="col-title__album-name" [routerLink]="['/panel/album', track.album.id]">{{ track.album.name }}</span></td>
+            <td class="added-at"><span>{{ track.played_at | date:"d MMM. 'de' y" }}</span></td>
+            <td class="body-row--end"><span>{{ track.duration_ms | date:'mm:ss' }}</span></td>
+        </tr>
+    </tbody>
+</table>

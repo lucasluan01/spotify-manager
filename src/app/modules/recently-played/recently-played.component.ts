@@ -22,6 +22,16 @@ export class RecentlyPlayedComponent implements OnInit {
   getRecentlyPlayedTracks(): void {
     this.__playerApi.getRecentlyPlayedTracks().subscribe(
       (response: RecentlyPlayedItemsModel) => {
+        response.items.map(
+          (item: any) => {
+            item.album = item.track.album;
+            item.name = item.track.name;
+            item.artists = item.track.artists;
+            item.duration_ms = item.track.duration_ms;
+            item.preview_url = item.track.preview_url;
+            delete item['track']; 
+          }
+        );
         this.recentlyPlayed = response.items;
     });
   }

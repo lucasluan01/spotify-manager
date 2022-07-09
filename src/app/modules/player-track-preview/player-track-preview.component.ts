@@ -26,8 +26,8 @@ export class PlayerTrackPreviewComponent implements OnInit {
   ngOnInit(): void {
     this._moduleService.currentTrack.subscribe(
       (track) => {
-        this.track = track.track;
-        this.urlCurrentAudio = track.track.preview_url;
+        this.track = track;
+        this.urlCurrentAudio = track.preview_url;
       });
   }
 

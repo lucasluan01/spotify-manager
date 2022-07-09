@@ -29,8 +29,6 @@ export class AlbumComponent implements OnInit {
         this.id = response.id;
         this.getAlbum();
       });
-
-    // this.getAlbumTracks();
   }
 
   getAlbum() {

@@ -1,0 +1,90 @@
+@import 'variables.scss';
+
+* {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: map-get($map: $color-text, $key: 'medium');
+}
+
+td,
+.col-title__description {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.material-icons {
+    font-size: 1.5rem;
+}
+
+.table {
+    width: 100%;
+}
+
+.header-row,
+.body-row {
+    display: grid;
+    grid-template-columns: 30px repeat(2, 1fr) .75fr 58px;
+    align-items: center;
+    justify-items: flex-start;
+    padding: 10px 15px;
+    gap: 30px;
+
+    &--end {
+        justify-self: flex-end;
+        text-align: end;
+    }
+}
+
+.header-row {
+    border-bottom: 1px solid map-get($map: $color-grey, $key: '02dp');
+    text-transform: uppercase;
+}
+
+.body-row {
+    &:hover {
+        background-color: map-get($map: $color-grey, $key: '02dp');
+    }
+
+    &__col-title {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+
+}
+
+.col-title {
+    &__image {
+        float: left;
+        margin-right: 10px;
+        width: 40px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        background-size: cover;
+    }
+
+    &__name-song {
+        font-size: 16px;
+        font-weight: 500;
+        color: map-get($map: $color-text, $key: 'high');
+    }
+
+    &__artist-name:not(:last-child)::after {
+        content: ', ';
+        text-decoration: none;
+        color: map-get($map: $color-text, $key: 'medium');
+    }
+
+    &__artist-name,
+    &__album-name {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+            color: map-get($map: $color-text, $key: 'high');
+        }
+    }
+}
