@@ -17,7 +17,8 @@ export class ModuleService {
   constructor() { }
   
   setPlayerTrack(track: TrackModel) {
-    this.playerTrack$.next(track);
+    sessionStorage.setItem('track', JSON.stringify(track));
+    this.playerTrack$.next('');
   }
 
   changeSelectedCollection(collection: any) {

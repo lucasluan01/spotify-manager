@@ -25,10 +25,11 @@ export class PlayerTrackPreviewComponent implements OnInit {
 
   ngOnInit(): void {
     this._moduleService.currentTrack.subscribe(
-      (track) => {
-        this.track = track;
-        this.urlCurrentAudio = track.preview_url;
+      () => {
+        this.track = JSON.parse(sessionStorage.getItem('track') || '');
+        this.urlCurrentAudio = this.track.preview_url;
       });
+      
   }
 
   onPlayPause(player: HTMLAudioElement) {
