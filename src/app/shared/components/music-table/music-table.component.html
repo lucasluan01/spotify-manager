@@ -4,7 +4,7 @@
             <th class="header-row--end">#</th>
             <th>Título</th>
             <th>Álbum</th>
-            <th>Reproduzido em</th>
+            <th>{{dateColumnName}}</th>
             <th class="header-row--end"><i class="material-icons">access_time</i></th>
         </tr>
     </thead>
@@ -22,7 +22,7 @@
                 </div>
             </td>
             <td class="album"><span class="col-title__album-name" [routerLink]="['/panel/album', track.album.id]">{{ track.album.name }}</span></td>
-            <td class="added-at"><span>{{ track.played_at | date:"d MMM. 'de' y" }}</span></td>
+            <td class="added-at"><span>{{ track.played_at || track.added_at || track.album.release_date | date:"d MMM. 'de' y" }}</span></td>
             <td class="body-row--end"><span>{{ track.duration_ms | date:'mm:ss' }}</span></td>
         </tr>
     </tbody>

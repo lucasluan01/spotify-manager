@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PlaylistComponent } from './playlist.component';
 import { HeaderBannerComponent } from './header-banner/header-banner.component';
-import { MusicTableComponent } from './music-table/music-table.component';
 
 
 
@@ -12,7 +11,6 @@ import { MusicTableComponent } from './music-table/music-table.component';
   declarations: [
     PlaylistComponent,
     HeaderBannerComponent,
-    MusicTableComponent
   ],
   imports: [
     CommonModule,

@@ -61,6 +61,17 @@ export class PlaylistComponent implements OnInit {
           this.offset += response.limit;
           this.getPlaylistItems();
         }
+
+        response.items.map(
+          (item: any) => {
+            item.album = item.track.album;
+            item.name = item.track.name;
+            item.artists = item.track.artists;
+            item.duration_ms = item.track.duration_ms;
+            item.preview_url = item.track.preview_url;
+            delete item['track'];
+          }
+        );
         this.tracks = [...this.tracks, ...response.items];
       }
     );

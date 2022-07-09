@@ -59,6 +59,7 @@ export class ArtistComponent implements OnInit {
     this._artistApiService.getArtistsTopTracks(this.id).subscribe(
       (response: any) => {
         this.tracks = response.tracks;
+        console.log(this.tracks);
       }
     );
   }

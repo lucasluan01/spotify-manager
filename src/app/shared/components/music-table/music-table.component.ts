@@ -14,6 +14,7 @@ import { TrackModel } from '../../models/track.model';
 export class MusicTableComponent implements OnInit {
 
   @Input() tracks: any;
+  @Input() dateColumnName: string = '';
 
   constructor(
     private _moduleService: ModuleService,
