@@ -1,9 +1,10 @@
-import { PlaylistsApiService } from './../../core/http/playlists/playlists-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
 import { ModuleService } from '../module.service';
 import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
+import { AlbumApiService } from 'src/app/core/http/album/album-api.service';
+import { PlaylistsApiService } from './../../core/http/playlists/playlists-api.service';
 
 @Component({
   selector: 'app-create-playlist',
@@ -25,6 +26,7 @@ export class CreatePlaylistComponent implements OnInit {
     public dialog: MatDialog,
     private _moduleService: ModuleService,
     private _playlistsApiService: PlaylistsApiService,
+    private _albumApiService: AlbumApiService
   ) { }
 
   ngOnInit(): void {
@@ -50,12 +52,10 @@ export class CreatePlaylistComponent implements OnInit {
     this.offset = 0;
 
     this.arraySelectedCollection.forEach((element: any) => {
-      if (element.collectionType === 'playlist') {
+      if (element.collectionType === 'playlist')
         this.getPlaylistItems(element.id);
-      }
-      else {
-        // ! FALTA CRIAR O MÉTODO PARA BUSCAR OS ITENS DE UM ÁLBUM
-      }
+      else
+        this.getAlbumItems(element.id);
     });
   }
 
@@ -66,7 +66,33 @@ export class CreatePlaylistComponent implements OnInit {
           this.offset += response.limit;
           this.getPlaylistItems(idPlaylist);
         }
+
+        response.items.map(
+          (item: any) => {
+            item.album = item.track.album;
+            item.name = item.track.name;
+            item.artists = item.track.artists;
+            item.duration_ms = item.track.duration_ms;
+            item.preview_url = item.track.preview_url;
+            delete item['track'];
+          }
+        );
         this.tracks = [...this.tracks, ...response.items];
+        this.getTrackReleaseDates();
+      }
+    );
+  }
+
+  getAlbumItems(idAlbum: string): void {
+    this._albumApiService.getAlbum(idAlbum).subscribe(
+      (response: any) => {
+        response.tracks.items.map(
+          (item: any) => {
+            item.album = {
+              release_date: response.release_date,
+            };
+          });
+        this.tracks = response.tracks.items;
         this.getTrackReleaseDates();
       }
     );
@@ -75,7 +101,7 @@ export class CreatePlaylistComponent implements OnInit {
   getTrackReleaseDates(): void {
 
     this.tracks.forEach((element: any) => {
-      this.releaseDates.push(Number(element.track.album.release_date.split('-')[0]));
+      this.releaseDates.push(Number(element.album.release_date.split('-')[0]));
     });   
     this.releaseDates = [... new Set(this.releaseDates)].sort();
   }
