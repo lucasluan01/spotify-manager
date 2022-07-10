@@ -8,6 +8,7 @@
 </ng-container>
 
 <ng-container *ngIf="queryInput.value.trim().length > 0">
+    <app-music-table [tracks]="dataSearch.tracks.items" [dateColumnName]="'Lançado em'"></app-music-table>
     <app-list-card [title]="'Playlists'" [collection]="dataSearch.playlists.items" [collectionType]="'playlist'"></app-list-card>
     <app-list-card [title]="'Álbuns'" [collection]="dataSearch.albums.items" [collectionType]="'album'"></app-list-card>
     <app-list-card [title]="'Artistas'" [collection]="dataSearch.artists.items" [collectionType]="'artist'"></app-list-card>
