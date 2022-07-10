@@ -6,7 +6,7 @@ import { ArtistModel } from '../../models/artist.model';
 import { TrackModel } from '../../models/track.model';
 
 @Component({
-  selector: 'dev-table',
+  selector: 'app-music-table',
   templateUrl: './music-table.component.html',
   styleUrls: ['./music-table.component.scss']
 })

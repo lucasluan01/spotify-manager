@@ -1,19 +1,20 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { AlbumComponent } from './album.component';
-import { MusicTableComponent } from './music-table/music-table.component';
+import { SharedModule } from './../../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
     AlbumComponent,
-    MusicTableComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     AlbumComponent

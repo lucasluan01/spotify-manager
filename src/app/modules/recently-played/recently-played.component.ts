@@ -33,6 +33,7 @@ export class RecentlyPlayedComponent implements OnInit {
           }
         );
         this.recentlyPlayed = response.items;
+        console.log(this.recentlyPlayed);
     });
   }
 

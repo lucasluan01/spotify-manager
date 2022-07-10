@@ -35,6 +35,16 @@ export class AlbumComponent implements OnInit {
     this._albumApiService.getAlbum(this.id).subscribe(
       (response: AlbumModel) => {
         this.album = response;
+        
+        response.tracks.items.map(
+          (item: any) => {
+            item.album = {
+              id: response.id,
+              name: response.name,
+              images: response.images,
+              release_date: response.release_date,
+            };
+        });
         this.tracks = response.tracks.items;
       }
     );
