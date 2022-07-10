@@ -47,11 +47,14 @@ export class CreatePlaylistComponent implements OnInit {
 
   getPlaylistOrAlbum(): void {
     this.tracks = [];
+    this.offset = 0;
+
     this.arraySelectedCollection.forEach((element: any) => {
       if (element.collectionType === 'playlist') {
         this.getPlaylistItems(element.id);
       }
       else {
+        // ! FALTA CRIAR O MÉTODO PARA BUSCAR OS ITENS DE UM ÁLBUM
       }
     });
   }
