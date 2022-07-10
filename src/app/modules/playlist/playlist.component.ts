@@ -75,29 +75,6 @@ export class PlaylistComponent implements OnInit {
         this.tracks = [...this.tracks, ...response.items];
       }
     );
-
-    // this._playlistApiService.getPlaylistItems(this.idPlaylist, this.offset).pipe(
-    //   delay(1000),
-    //   tap((response: any) => {
-    //     response.items.map(
-    //       (item: any) => {
-    //         this._libraryApiService.getCheckIfTrackIsSaved(item.track.id).subscribe(
-    //           (library: any) => {
-    //             item.isSaved = library[0];
-    //           }
-    //         );
-    //       }
-    //     );
-    //   }
-    //   )).subscribe(
-    //     (response: any) => {
-    //       if (!!response.next) {
-    //         this.offset += response.limit;
-    //         this.getPlaylistItems();
-    //       }
-    //       this.tracks = [...this.tracks, ...response.items];
-    //     }
-    //   );
   }
 
   getUserSavedTracks() {
@@ -107,6 +84,18 @@ export class PlaylistComponent implements OnInit {
           this.offset += response.limit;
           this.getUserSavedTracks();
         }
+
+        response.items.map(
+          (item: any) => {
+            item.album = item.track.album;
+            item.name = item.track.name;
+            item.artists = item.track.artists;
+            item.duration_ms = item.track.duration_ms;
+            item.preview_url = item.track.preview_url;
+            delete item['track'];
+          }
+        );
+
         this.tracks = [...this.tracks, ...response.items];
       }
     );
