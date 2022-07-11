@@ -21,7 +21,7 @@ export interface TrackModel {
     // track: boolean
     // track_number: number
     // type: string
-    // uri: string
+    uri: string
     
     images: ImageModel[]
     total: number //

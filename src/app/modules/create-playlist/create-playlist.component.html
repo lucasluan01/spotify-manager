@@ -1,6 +1,5 @@
-<h2 class="title">Gerar a partir de outras playlists:</h2>
-
 <div class="list-card">
+    <h2 class="title">Gerar a partir de outras playlists:</h2>
     <div class="list-card__items">
         <app-preview-card *ngFor="let item of arraySelectedCollection" [id]="item.id" [image]="item.image"
             [title]="item.title" [description]="item.description" [collectionType]="collectionType" [isDelete]="true">
@@ -13,8 +12,14 @@
 </div>
 
 <div class="date-selection">
-    <ng-container *ngFor="let item of releaseDates, let index">
-        <input type="checkbox" id="yearCheckbox {{index}}" class="date-selection__item"/>
-        <label for="yearCheckbox {{index}}" class="date-selection__label">{{index}}</label>
-    </ng-container>
+    <h2 class="title">Selecionar anos de lançamento:</h2>
+    <div class="date-selection__list">
+        <ng-container *ngFor="let item of releaseDates, let i = index">
+            <input type="checkbox" id="yearCheckbox-{{i}}" class="date-selection__item" #input
+                (click)="onYearSelected(item, input.checked)" />
+            <label for="yearCheckbox-{{i}}" class="date-selection__label" #releaseYear>{{item}}</label>
+        </ng-container>
+    </div>
 </div>
+
+<button class="btn-create-playlist" (click)="onNewPlaylist()">Gerar nova playlist</button>

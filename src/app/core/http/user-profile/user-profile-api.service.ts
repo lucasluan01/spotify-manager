@@ -13,7 +13,7 @@ export class UserProfileApiService {
     private _http: HttpClient
   ) { }
 
-  getUserProfile(): Observable<UserProfileModel> {
+  getCurrentUserProfile(): Observable<UserProfileModel> {
     return this._http.get<UserProfileModel>(`${environment.apiUrl}/${environment.currentUser}`);
   }
 }

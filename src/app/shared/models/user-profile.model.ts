@@ -8,7 +8,7 @@ export interface UserProfileModel {
     // external_urls: ExternalUrls
     // followers: Followers
     // href: string
-    // id: string
+    id: string
     images: ImageModel[]
     // product: string
     // type: string

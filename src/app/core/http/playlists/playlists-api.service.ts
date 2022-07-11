@@ -29,5 +29,11 @@ export class PlaylistsApiService {
     return this._http.get<PlaylistModel>(`${environment.apiUrl}/${environment.playlists}/${id}`);
   }
 
-  
+  postCreatePlaylist(userID: string, body: any) {
+    return this._http.post(`${environment.apiUrl}/${environment.users}/${userID}/${environment.playlists}`, JSON.stringify(body));
+  }
+
+  postAddItemsPlaylist(id: string, body: any) {
+    return this._http.post(`${environment.apiUrl}/${environment.playlists}/${id}/${environment.tracks}`, JSON.stringify(body));
+  }
 }

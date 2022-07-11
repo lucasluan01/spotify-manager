@@ -56,9 +56,10 @@ export class NavigationComponent implements OnInit {
   }
 
   getUserProfile(): void {
-    this._userProfileApiService.getUserProfile().subscribe(
+    this._userProfileApiService.getCurrentUserProfile().subscribe(
       (response: UserProfileModel) => {
         this.userProfile = response;
+        sessionStorage.setItem('userID', this.userProfile.id);
       }
     );
   }

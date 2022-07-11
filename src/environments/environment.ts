@@ -15,6 +15,7 @@ export const environment = {
   search: 'search',
   player: 'player',
   albums: 'albums',
+  users: 'users',
   country: 'BR',
   locale: 'pt_BR',
 };
@@ -24,6 +25,8 @@ export const authorizationSpotify = {
   redirectUri: 'http://localhost:4200/',
   authEndPoint: 'https://accounts.spotify.com/authorize',
   scopes: [
+    'playlist-modify-private',
+    'playlist-modify-public',
     'playlist-read-private',
     // 'playlist-read-public',
     'user-library-read',

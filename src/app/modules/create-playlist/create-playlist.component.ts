@@ -21,6 +21,8 @@ export class CreatePlaylistComponent implements OnInit {
   offset: number = 0;
   tracks: PlaylistItemsModel['items'] = [];
   releaseDates: number[] = [];
+  yearsReleasesSelected: number[] = [];
+  newPlaylist: PlaylistItemsModel['items'] = []
 
   constructor(
     public dialog: MatDialog,
@@ -41,6 +43,7 @@ export class CreatePlaylistComponent implements OnInit {
         }
         else {
           this.arraySelectedCollection = this.arraySelectedCollection.filter((item: any) => item.id !== selectedCollection.id);
+          this.releaseDates = [];
         }
         this.getPlaylistOrAlbum();
       }
@@ -74,6 +77,7 @@ export class CreatePlaylistComponent implements OnInit {
             item.artists = item.track.artists;
             item.duration_ms = item.track.duration_ms;
             item.preview_url = item.track.preview_url;
+            item.uri = item.track.uri;
             delete item['track'];
           }
         );
@@ -102,8 +106,33 @@ export class CreatePlaylistComponent implements OnInit {
 
     this.tracks.forEach((element: any) => {
       this.releaseDates.push(Number(element.album.release_date.split('-')[0]));
-    });   
+    });
     this.releaseDates = [... new Set(this.releaseDates)].sort();
+  }
+
+  createPlaylist(): void {
+    let usarID = sessionStorage.getItem('userID') || '';
+
+    let body = {
+      name: "[GS] Full",
+      description: "Criada a partir do Gerenciador Spotify",
+      public: false
+    }
+
+    this._playlistsApiService.postCreatePlaylist(usarID, body).subscribe(
+      (response: any) => {
+        if(response.id)
+          this.postAddItemsPlaylist(response.id);
+      }
+    );
+  }
+
+  postAddItemsPlaylist(idPlaylist: string): void {
+    let body = {
+      uris: this.newPlaylist.map((item: any) => item.uri)
+    }
+
+    this._playlistsApiService.postAddItemsPlaylist(idPlaylist, body).subscribe();
   }
 
   onOpenDialog(): void {
@@ -113,4 +142,18 @@ export class CreatePlaylistComponent implements OnInit {
     });
   }
 
+  onYearSelected(year: number, isSelected: boolean): void {
+    if (isSelected)
+      this.yearsReleasesSelected.push(year);
+    else
+      this.yearsReleasesSelected = this.yearsReleasesSelected.filter((item: number) => item !== year);
+  }
+
+  onNewPlaylist(): void {
+    this.newPlaylist = this.tracks.filter(
+      (element: any) =>
+        this.yearsReleasesSelected.includes(Number(element.album.release_date.split('-')[0]))
+    );
+    this.createPlaylist();
+  }
 }

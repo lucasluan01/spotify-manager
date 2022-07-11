@@ -20,7 +20,7 @@
     background: #1E1E1E;
     border-radius: 5px;
     width: 220px;
-        height: 320px;
+    height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +30,7 @@
         background-color: map-get($map: $color-grey, $key: '02dp');
         cursor: pointer;
     }
-    
+
     * {
         color: map-get($map: $color-text, $key: 'medium');
     }
@@ -43,6 +43,7 @@
         font-size: .875rem;
     }
 }
+
 .list-card {
     display: flex;
     flex-direction: column;
@@ -57,10 +58,15 @@
 }
 
 .date-selection {
-
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
+
+    &__list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
 
     &__item {
         display: none;
@@ -83,5 +89,18 @@
         font-weight: 700;
         font-size: .875rem;
         user-select: none;
+    }
+}
+
+.btn-create-playlist {
+    width: 250px;
+    padding: 10px 20px;
+    background-color: #2A3CDA;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+
+    &:active {
+        background-color: #3A47D5;
     }
 }
