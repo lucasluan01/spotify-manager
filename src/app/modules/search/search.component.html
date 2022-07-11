@@ -1,6 +1,6 @@
 <div class="search">
     <i class="material-icons">search</i>
-    <input #queryInput type="text" placeholder="Buscar por lorem ou ipsum" (keyup)="onSearch(queryInput.value.trim())">
+    <input #queryInput type="text" placeholder="Buscar por música, playlist, álbum ou artista" (keyup)="onSearch(queryInput.value.trim())">
 </div>
 
 <ng-container *ngIf="queryInput.value.trim().length === 0">

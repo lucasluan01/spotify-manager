@@ -95,7 +95,6 @@ export class PlaylistComponent implements OnInit {
             delete item['track'];
           }
         );
-
         this.tracks = [...this.tracks, ...response.items];
       }
     );
