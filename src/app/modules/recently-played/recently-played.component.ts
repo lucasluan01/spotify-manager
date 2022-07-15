@@ -12,7 +12,7 @@ export class RecentlyPlayedComponent implements OnInit {
   recentlyPlayed: RecentlyPlayedItemsModel['items'] = [];
 
   constructor(
-    private __playerApi: PlayerApiService
+    private _playerApi: PlayerApiService
   ) { }
 
   ngOnInit(): void {
@@ -20,16 +20,15 @@ export class RecentlyPlayedComponent implements OnInit {
   }
 
   getRecentlyPlayedTracks(): void {
-    this.__playerApi.getRecentlyPlayedTracks().subscribe(
+    this._playerApi.getRecentlyPlayedTracks().subscribe(
       (response: RecentlyPlayedItemsModel) => {
+
         response.items.map(
           (item: any) => {
-            item.album = item.track.album;
-            item.name = item.track.name;
-            item.artists = item.track.artists;
-            item.duration_ms = item.track.duration_ms;
-            item.preview_url = item.track.preview_url;
-            delete item['track']; 
+            Object.keys(item.track).forEach(key => {
+              item[key] = item.track[key];
+            });
+            delete item.track;
           }
         );
         this.recentlyPlayed = response.items;

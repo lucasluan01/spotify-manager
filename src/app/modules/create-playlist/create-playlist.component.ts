@@ -1,4 +1,3 @@
-import { concatMap, delay, of, Observable, first, mergeMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
@@ -65,13 +64,12 @@ export class CreatePlaylistComponent implements OnInit {
     this.tracks = [];
 
     this.arraySelectedCollection.forEach((element: any) => {
-    
-    if (element.collectionType === 'playlist') {
-      this.getPlaylistItems(element.id, 0);
-    }
+      if (element.collectionType === 'playlist') {
+        this.getPlaylistItems(element.id, 0);
+      }
       else {
         this.getAlbumItems(element.id);
-    }
+      }
     });
   }
 
@@ -116,7 +114,6 @@ export class CreatePlaylistComponent implements OnInit {
   }
 
   getTrackReleaseDates(): void {
-
     this.tracks.forEach((element: any) => {
       this.releaseDates.push(Number(element.album.release_date.split('-')[0]));
     });
@@ -149,7 +146,7 @@ export class CreatePlaylistComponent implements OnInit {
       let body = {
         uris: urisTracks.splice(-requestSize)
       }
-      this._playlistsApiService.postAddItemsPlaylist(idPlaylist, body).pipe(delay(3000)).subscribe();
+      this._playlistsApiService.postAddItemsPlaylist(idPlaylist, body).subscribe();
       this.postAddItemsPlaylist(idPlaylist, urisTracks, requestSize);
     }
   }

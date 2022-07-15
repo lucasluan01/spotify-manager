@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LibraryApiService } from 'src/app/core/http/library/library-api.service';
 
-import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.service';
 
 import { PlaylistModel } from './../../shared/models/playlist.model';
+import { PlaylistsApiService } from 'src/app/core/http/playlists/playlists-api.service';
 import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
 
 @Component({
@@ -64,12 +64,10 @@ export class PlaylistComponent implements OnInit {
 
         response.items.map(
           (item: any) => {
-            item.album = item.track.album;
-            item.name = item.track.name;
-            item.artists = item.track.artists;
-            item.duration_ms = item.track.duration_ms;
-            item.preview_url = item.track.preview_url;
-            delete item['track'];
+            Object.keys(item.track).forEach(key => {
+              item[key] = item.track[key];
+            });
+            delete item.track;
           }
         );
         this.tracks = [...this.tracks, ...response.items];
@@ -87,12 +85,10 @@ export class PlaylistComponent implements OnInit {
 
         response.items.map(
           (item: any) => {
-            item.album = item.track.album;
-            item.name = item.track.name;
-            item.artists = item.track.artists;
-            item.duration_ms = item.track.duration_ms;
-            item.preview_url = item.track.preview_url;
-            delete item['track'];
+            Object.keys(item.track).forEach(key => {
+              item[key] = item.track[key];
+            });
+            delete item.track;
           }
         );
         this.tracks = [...this.tracks, ...response.items];
