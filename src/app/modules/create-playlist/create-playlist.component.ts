@@ -1,3 +1,4 @@
+import { concatMap, delay, of, Observable, first, mergeMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
@@ -5,6 +6,7 @@ import { ModuleService } from '../module.service';
 import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
 import { AlbumApiService } from 'src/app/core/http/album/album-api.service';
 import { PlaylistsApiService } from './../../core/http/playlists/playlists-api.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-playlist',
@@ -18,20 +20,23 @@ export class CreatePlaylistComponent implements OnInit {
   @Input() collectionType: string = ''
 
   arraySelectedCollection: any = [];
-  offset: number = 0;
   tracks: PlaylistItemsModel['items'] = [];
   releaseDates: number[] = [];
   yearsReleasesSelected: number[] = [];
-  newPlaylist: PlaylistItemsModel['items'] = []
+  newPlaylist: PlaylistItemsModel['items'] = [];
+  formGroup!: FormGroup;
 
   constructor(
     public dialog: MatDialog,
     private _moduleService: ModuleService,
     private _playlistsApiService: PlaylistsApiService,
-    private _albumApiService: AlbumApiService
+    private _albumApiService: AlbumApiService,
+    private _formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.initForm();
+
     this._moduleService.selectedCollection.subscribe(
       (selectedCollection: any) => {
         this.releaseDates = [];
@@ -50,24 +55,32 @@ export class CreatePlaylistComponent implements OnInit {
     );
   }
 
-  getPlaylistOrAlbum(): void {
-    this.tracks = [];
-    this.offset = 0;
-
-    this.arraySelectedCollection.forEach((element: any) => {
-      if (element.collectionType === 'playlist')
-        this.getPlaylistItems(element.id);
-      else
-        this.getAlbumItems(element.id);
+  initForm(): void {
+    this.formGroup = this._formBuilder.group({
+      playlistName: ['',],
     });
   }
 
-  getPlaylistItems(idPlaylist: string): void {
-    this._playlistsApiService.getPlaylistItems(idPlaylist, this.offset).subscribe(
+  getPlaylistOrAlbum(): void {
+    this.tracks = [];
+
+    this.arraySelectedCollection.forEach((element: any) => {
+    
+    if (element.collectionType === 'playlist') {
+      this.getPlaylistItems(element.id, 0);
+    }
+      else {
+        this.getAlbumItems(element.id);
+    }
+    });
+  }
+
+  getPlaylistItems(idPlaylist: string, offset: number): void {
+    this._playlistsApiService.getPlaylistItems(idPlaylist, offset).subscribe(
       (response: any) => {
         if (!!response.next) {
-          this.offset += response.limit;
-          this.getPlaylistItems(idPlaylist);
+          offset += response.limit;
+          this.getPlaylistItems(idPlaylist, offset);
         }
 
         response.items.map(
@@ -114,25 +127,31 @@ export class CreatePlaylistComponent implements OnInit {
     let usarID = sessionStorage.getItem('userID') || '';
 
     let body = {
-      name: "[GS] Full",
+      name: "[GS] Teste album",
       description: "Criada a partir do Gerenciador Spotify",
       public: false
     }
 
     this._playlistsApiService.postCreatePlaylist(usarID, body).subscribe(
       (response: any) => {
-        if(response.id)
-          this.postAddItemsPlaylist(response.id);
+        if (response.id) {
+          let urisTracks = this.newPlaylist.map((item: any) => item.uri)
+          let numberRequests = Math.ceil(urisTracks.length / 100);
+          let requestSize = urisTracks.length / numberRequests;
+          this.postAddItemsPlaylist(response.id, urisTracks, requestSize);
+        }
       }
     );
   }
 
-  postAddItemsPlaylist(idPlaylist: string): void {
-    let body = {
-      uris: this.newPlaylist.map((item: any) => item.uri)
+  postAddItemsPlaylist(idPlaylist: string, urisTracks: string[], requestSize: number): void {
+    if (urisTracks.length > 0) {
+      let body = {
+        uris: urisTracks.splice(-requestSize)
+      }
+      this._playlistsApiService.postAddItemsPlaylist(idPlaylist, body).pipe(delay(3000)).subscribe();
+      this.postAddItemsPlaylist(idPlaylist, urisTracks, requestSize);
     }
-
-    this._playlistsApiService.postAddItemsPlaylist(idPlaylist, body).subscribe();
   }
 
   onOpenDialog(): void {
@@ -156,4 +175,5 @@ export class CreatePlaylistComponent implements OnInit {
     );
     this.createPlaylist();
   }
+
 }

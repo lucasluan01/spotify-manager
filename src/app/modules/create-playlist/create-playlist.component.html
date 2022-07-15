@@ -12,7 +12,7 @@
 </div>
 
 <div class="date-selection">
-    <h2 class="title">Selecionar anos de lançamento:</h2>
+    <h2 class="title">Filtrar por ano de lançamento:</h2>
     <div class="date-selection__list">
         <ng-container *ngFor="let item of releaseDates, let i = index">
             <input type="checkbox" id="yearCheckbox-{{i}}" class="date-selection__item" #input
@@ -22,4 +22,7 @@
     </div>
 </div>
 
-<button class="btn-create-playlist" (click)="onNewPlaylist()">Gerar nova playlist</button>
+<form action="" [formGroup]="formGroup">
+    <!-- <input type="text" placeholder="Nome da playlist" formControlName="playlistNamev"> -->
+    <input class="btn-create-playlist" type="submit" value="Gerar nova playlist" (click)="onNewPlaylist()">
+</form>
