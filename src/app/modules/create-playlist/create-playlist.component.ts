@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
@@ -5,7 +6,7 @@ import { ModuleService } from '../module.service';
 import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
 import { AlbumApiService } from 'src/app/core/http/album/album-api.service';
 import { PlaylistsApiService } from './../../core/http/playlists/playlists-api.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-playlist',
@@ -30,7 +31,8 @@ export class CreatePlaylistComponent implements OnInit {
     private _moduleService: ModuleService,
     private _playlistsApiService: PlaylistsApiService,
     private _albumApiService: AlbumApiService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -56,8 +58,12 @@ export class CreatePlaylistComponent implements OnInit {
 
   initForm(): void {
     this.formGroup = this._formBuilder.group({
-      playlistName: ['',],
+      playlistName: ['', [Validators.required, Validators.minLength(3)]],
     });
+  }
+
+  get playlistName() {
+    return this.formGroup.get('playlistName');
   }
 
   getPlaylistOrAlbum(): void {
@@ -124,11 +130,21 @@ export class CreatePlaylistComponent implements OnInit {
     let usarID = sessionStorage.getItem('userID') || '';
 
     let body = {
-      name: "[GS] Teste album",
+      name: this.playlistName?.value,
       description: "Criada a partir do Gerenciador Spotify",
       public: false
     }
 
+    if (this.yearsReleasesSelected.length > 0) {
+      this.newPlaylist = this.tracks.filter(
+        (element: any) =>
+          this.yearsReleasesSelected.includes(Number(element.album.release_date.split('-')[0]))
+      );
+    }
+    else {
+      this.newPlaylist = this.tracks;
+    }
+    
     this._playlistsApiService.postCreatePlaylist(usarID, body).subscribe(
       (response: any) => {
         if (response.id) {
@@ -139,6 +155,8 @@ export class CreatePlaylistComponent implements OnInit {
         }
       }
     );
+
+    this.formGroup.reset();
   }
 
   postAddItemsPlaylist(idPlaylist: string, urisTracks: string[], requestSize: number): void {
@@ -166,11 +184,21 @@ export class CreatePlaylistComponent implements OnInit {
   }
 
   onNewPlaylist(): void {
-    this.newPlaylist = this.tracks.filter(
-      (element: any) =>
-        this.yearsReleasesSelected.includes(Number(element.album.release_date.split('-')[0]))
-    );
-    this.createPlaylist();
+    let errorMessage;
+
+    if (this.playlistName?.errors?.['required'])
+      errorMessage = 'Nome da playlist é obrigatório';
+    else if (this.playlistName?.errors?.['minlength'])
+      errorMessage = 'Nome da playlist deve ter no mínimo 3 caracteres';
+
+    if (errorMessage) {
+      this._snackBar.open(errorMessage, '', {
+        duration: 4000,
+        panelClass: ['error-snackbar']
+      });
+    }
+    else 
+      this.createPlaylist();
   }
 
 }

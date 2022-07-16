@@ -11,18 +11,23 @@
     </div>
 </div>
 
-<div class="date-selection">
-    <h2 class="title">Filtrar por ano de lançamento:</h2>
-    <div class="date-selection__list">
-        <ng-container *ngFor="let item of releaseDates, let i = index">
-            <input type="checkbox" id="yearCheckbox-{{i}}" class="date-selection__item" #input
-                (click)="onYearSelected(item, input.checked)" />
-            <label for="yearCheckbox-{{i}}" class="date-selection__label" #releaseYear>{{item}}</label>
-        </ng-container>
+<ng-container *ngIf="arraySelectedCollection.length > 0">
+    <div class="date-selection">
+        <div>
+            <h2 class="title">Filtrar por ano de lançamento:</h2>
+            <p>*Se nenhum ano de lançamento for selecionado, a nova playlist terá todas as músicas </p>
+        </div>
+        <div class="date-selection__list">
+            <ng-container *ngFor="let item of releaseDates, let i = index">
+                <input type="checkbox" id="yearCheckbox-{{i}}" class="date-selection__item" #input
+                    (click)="onYearSelected(item, input.checked)" />
+                <label for="yearCheckbox-{{i}}" class="date-selection__label" #releaseYear>{{item}}</label>
+            </ng-container>
+        </div>
     </div>
-</div>
 
-<form action="" [formGroup]="formGroup">
-    <!-- <input type="text" placeholder="Nome da playlist" formControlName="playlistNamev"> -->
-    <input class="btn-create-playlist" type="submit" value="Gerar nova playlist" (click)="onNewPlaylist()">
-</form>
+    <form class="form" action="" [formGroup]="formGroup" (ngSubmit)="onNewPlaylist()">
+        <input class="form__name-playlist" type="text" placeholder="Nome da playlist" formControlName="playlistName">
+        <input class="form__submit" type="submit" value="Gerar nova playlist">
+    </form>
+</ng-container>
