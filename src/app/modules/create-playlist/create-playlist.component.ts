@@ -19,7 +19,7 @@ export class CreatePlaylistComponent implements OnInit {
   @Input() collection!: any;
   @Input() collectionType: string = ''
 
-  arraySelectedCollection: any = [];
+  collections: any = [];
   tracks: PlaylistItemsModel['items'] = [];
   releaseDates: number[] = [];
   yearsReleasesSelected: number[] = [];
@@ -37,23 +37,7 @@ export class CreatePlaylistComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-
-    this._moduleService.selectedCollection.subscribe(
-      (selectedCollection: any) => {
-        this.releaseDates = [];
-
-        if (selectedCollection.isAdd) {
-          if (selectedCollection !== null && !this.arraySelectedCollection.some((item: any) => item.id === selectedCollection.id)) {
-            this.arraySelectedCollection.push(selectedCollection);
-          }
-        }
-        else {
-          this.arraySelectedCollection = this.arraySelectedCollection.filter((item: any) => item.id !== selectedCollection.id);
-          this.releaseDates = [];
-        }
-        this.getPlaylistOrAlbum();
-      }
-    );
+    this.addOrRemoveCollection();
   }
 
   initForm(): void {
@@ -66,10 +50,26 @@ export class CreatePlaylistComponent implements OnInit {
     return this.formGroup.get('playlistName');
   }
 
+  addOrRemoveCollection(): void {
+    this._moduleService.selectedCollection.subscribe(
+      (selectedCollection: any) => {
+        this.releaseDates = [];
+
+        if (selectedCollection !== null && selectedCollection.isAdd && !this.collections.some((item: any) => item.id === selectedCollection.id))
+          this.collections.push(selectedCollection);
+        else {
+          this.collections = this.collections.filter((item: any) => item.id !== selectedCollection.id);
+          this.releaseDates = [];
+        }
+        this.getPlaylistOrAlbum();
+      }
+    );
+  }
+
   getPlaylistOrAlbum(): void {
     this.tracks = [];
 
-    this.arraySelectedCollection.forEach((element: any) => {
+    this.collections.forEach((element: any) => {
       if (element.collectionType === 'playlist') {
         this.getPlaylistItems(element.id, 0);
       }
@@ -81,7 +81,7 @@ export class CreatePlaylistComponent implements OnInit {
 
   getPlaylistItems(idPlaylist: string, offset: number): void {
     this._playlistsApiService.getPlaylistItems(idPlaylist, offset).subscribe(
-      (response: any) => {
+      (response: PlaylistItemsModel) => {
         if (!!response.next) {
           offset += response.limit;
           this.getPlaylistItems(idPlaylist, offset);
@@ -126,25 +126,25 @@ export class CreatePlaylistComponent implements OnInit {
     this.releaseDates = [... new Set(this.releaseDates)].sort();
   }
 
-  createPlaylist(): void {
-    let usarID = sessionStorage.getItem('userID') || '';
-
-    let body = {
-      name: this.playlistName?.value,
-      description: "Criada a partir do Gerenciador Spotify",
-      public: false
-    }
-
+  setNewPlaylist(): void {
     if (this.yearsReleasesSelected.length > 0) {
       this.newPlaylist = this.tracks.filter(
         (element: any) =>
           this.yearsReleasesSelected.includes(Number(element.album.release_date.split('-')[0]))
       );
     }
-    else {
+    else
       this.newPlaylist = this.tracks;
+  }
+
+  createPlaylist(): void {
+    let usarID = sessionStorage.getItem('userID') || '';
+
+    let body = {
+      name: this.playlistName?.value,
+      description: "Criada a partir do Gerenciador Spotify"
     }
-    
+
     this._playlistsApiService.postCreatePlaylist(usarID, body).subscribe(
       (response: any) => {
         if (response.id) {
@@ -155,8 +155,6 @@ export class CreatePlaylistComponent implements OnInit {
         }
       }
     );
-
-    this.formGroup.reset();
   }
 
   postAddItemsPlaylist(idPlaylist: string, urisTracks: string[], requestSize: number): void {
@@ -197,8 +195,11 @@ export class CreatePlaylistComponent implements OnInit {
         panelClass: ['error-snackbar']
       });
     }
-    else 
+    else {
+      this.setNewPlaylist();
       this.createPlaylist();
+      this.formGroup.reset();
+    }
   }
 
 }

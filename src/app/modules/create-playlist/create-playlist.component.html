@@ -1,7 +1,7 @@
 <div class="list-card">
     <h2 class="title">Gerar a partir de outras playlists:</h2>
     <div class="list-card__items">
-        <app-preview-card *ngFor="let item of arraySelectedCollection" [id]="item.id" [image]="item.image"
+        <app-preview-card *ngFor="let item of collections" [id]="item.id" [image]="item.image"
             [title]="item.title" [description]="item.description" [collectionType]="collectionType" [isDelete]="true">
         </app-preview-card>
         <div class="add-playlist" (click)="onOpenDialog()">
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<ng-container *ngIf="arraySelectedCollection.length > 0">
+<ng-container *ngIf="collections.length > 0">
     <div class="date-selection">
         <div>
             <h2 class="title">Filtrar por ano de lançamento:</h2>
