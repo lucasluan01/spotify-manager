@@ -33,14 +33,14 @@ export class NavigationComponent implements OnInit {
       link: 'my-library'
     },
     {
-      name: 'Dashboard',
-      icon: 'dashboard',
-      link: 'dashboard'
-    },
-    {
       name: 'Criar Playlist',
       icon: 'playlist_add',
       link: 'create-playlist'
+    },
+    {
+      name: 'Dashboard',
+      icon: 'dashboard',
+      link: 'dashboard'
     }
   ]
 

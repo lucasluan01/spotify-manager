@@ -33,10 +33,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RouterModule.forRoot(appRoutes),
   ],
   providers: [
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpTokenInterceptor,
-    multi: true
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptor,
+      multi: true
     },
     {
       provide: MatDialogRef,
