@@ -42,11 +42,12 @@ export class MusicTableComponent implements OnInit {
   }
 
   onSearch(query: string): void {
+    let regex = new RegExp(query);
+    
     if (query.length > 0) {
       this.showTracks = this.tracks.filter((item: any) => {
-        return item.name.toLowerCase().includes(query.toLowerCase()) ||
-          item.all_artists.toLowerCase().includes(query.toLowerCase()) ||
-          item.album.name.toLowerCase().includes(query.toLowerCase())
+        return regex.test(item.name.toLowerCase()) || regex.test(item.all_artists.toLowerCase()) ||
+          regex.test(item.album.name.toLowerCase());
       });
     } 
     else {
