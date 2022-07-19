@@ -18,8 +18,8 @@ export class LibraryApiService {
     return this._http.get<PlaylistItemsModel>(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}?offset=${offset}&limit=${limit}`);
   }
 
-  getCheckIfTrackIsSaved(trackId: string): Observable<any> {
-    return this._http.get<any>(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}/contains?ids=${trackId}`);
-  }
+  // getCheckIfTrackIsSaved(trackId: string): Observable<any> {
+  //   return this._http.get<any>(`${environment.apiUrl}/${environment.currentUser}/${environment.tracks}/contains?ids=${trackId}`);
+  // }
 
 }
