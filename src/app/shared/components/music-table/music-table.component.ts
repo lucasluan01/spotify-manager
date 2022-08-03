@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 
 
 import { ModuleService } from 'src/app/modules/module.service';
@@ -17,16 +18,22 @@ export class MusicTableComponent implements OnInit {
 
   searchResults: any = [];
   showTracks: any = [];
+  originalOrderTracks: any = [];
+  sortingType: number = 0;
 
   constructor(
     private _moduleService: ModuleService,
   ) { }
 
   ngOnInit(): void {
+    console.log('tracks', this.tracks);
+    
   }
 
   ngOnChanges(): void {
     this.showTracks = this.tracks;
+    this.originalOrderTracks = this.tracks;
+    
   }
 
   getAllArtists(track: any): any {
@@ -49,10 +56,41 @@ export class MusicTableComponent implements OnInit {
         return regex.test(item.name.toLowerCase()) || regex.test(item.all_artists.toLowerCase()) ||
           regex.test(item.album.name.toLowerCase());
       });
-    } 
+    }
     else {
       this.showTracks = this.tracks;
     }
   }
 
+  sortData(sort: Sort) {
+    const data = this.tracks.slice();
+    if (!sort.active || sort.direction === '') {
+      this.showTracks = data;
+      return;
+    }
+
+    this.showTracks = data.sort((a: any, b: any) => {
+      const isAsc = sort.direction === 'asc';
+
+      a.date = a.played_at || a.added_at || a.album.release_date;
+      b.date = b.played_at || b.added_at || b.album.release_date;
+
+      switch (sort.active) {
+        case 'song':
+          return compare(a.name.toLowerCase(), b.name.toLowerCase(), isAsc);
+        case 'album':
+          return compare(a.album.name.toLowerCase(), b.album.name.toLowerCase(), isAsc);
+        case 'date':
+          return compare(a.date, b.date, isAsc);
+        case 'time':
+          return compare(a.duration_ms, b.duration_ms, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+}
+
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

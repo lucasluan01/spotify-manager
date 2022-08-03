@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { ListCardComponent } from './list-card/list-card.component';
 import { MusicTableComponent } from './music-table/music-table.component';
-
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { MusicTableComponent } from './music-table/music-table.component';
   ],
   imports: [
     CommonModule,
+    MatSortModule,
     RouterModule
   ],
   exports: [

@@ -4,14 +4,14 @@
         (keyup)="onSearch(queryInput.value.trim())">
 </div>
 
-<table class="table">
+<table class="table" *ngIf="showTracks.length > 0; else notfound" matSort (matSortChange)="sortData($event)">
     <thead>
         <tr class="header-row">
             <th class="header-row--end">#</th>
-            <th>Título</th>
-            <th>Álbum</th>
-            <th>{{dateColumnName}}</th>
-            <th class="header-row--end"><i class="material-icons">access_time</i></th>
+            <th mat-sort-header="song">Título</th>
+            <th mat-sort-header="album">Álbum</th>
+            <th mat-sort-header="date">{{dateColumnName}}</th> 
+            <th mat-sort-header="time" class="header-row--end"><i class="material-icons">access_time</i></th>
         </tr>
     </thead>
     <tbody>
@@ -33,3 +33,7 @@
         </tr>
     </tbody>
 </table>
+
+<ng-template #notfound>
+    Nenhum resultado encontrado.
+</ng-template>
