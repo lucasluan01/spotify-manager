@@ -148,6 +148,11 @@ export class CreatePlaylistComponent implements OnInit {
     this._playlistsApiService.postCreatePlaylist(usarID, body).subscribe(
       (response: any) => {
         if (response.id) {
+          this._snackBar.open('Playlist criada com sucesso!', '', {
+            duration: 4000,
+            panelClass: 'snack-bar-success'
+          });
+
           let urisTracks = this.newPlaylist.map((item: any) => item.uri)
           let numberRequests = Math.ceil(urisTracks.length / 100);
           let requestSize = urisTracks.length / numberRequests;
@@ -162,7 +167,14 @@ export class CreatePlaylistComponent implements OnInit {
       let body = {
         uris: urisTracks.splice(-requestSize)
       }
-      this._playlistsApiService.postAddItemsPlaylist(idPlaylist, body).subscribe();
+      this._playlistsApiService.postAddItemsPlaylist(idPlaylist, body).subscribe(
+        (response: any) => {
+          this._snackBar.open('Adicionando músicas...', '', {
+            duration: 4000,
+            panelClass: 'snack-bar-info'
+          });
+        }
+      );
       this.postAddItemsPlaylist(idPlaylist, urisTracks, requestSize);
     }
   }
@@ -192,7 +204,7 @@ export class CreatePlaylistComponent implements OnInit {
     if (errorMessage) {
       this._snackBar.open(errorMessage, '', {
         duration: 4000,
-        panelClass: ['error-snackbar']
+        panelClass: ['snack-bar-error']
       });
     }
     else {

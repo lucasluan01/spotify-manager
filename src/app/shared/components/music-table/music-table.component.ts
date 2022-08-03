@@ -25,10 +25,7 @@ export class MusicTableComponent implements OnInit {
     private _moduleService: ModuleService,
   ) { }
 
-  ngOnInit(): void {
-    console.log('tracks', this.tracks);
-    
-  }
+  ngOnInit(): void { }
 
   ngOnChanges(): void {
     this.showTracks = this.tracks;

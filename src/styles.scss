@@ -20,6 +20,14 @@ body {
     background-color: map-get($color-grey, '00dp');
 }
 
-.error-snackbar {
-    background-color: red;
+.snack-bar-error {
+    background-color: #FF1744;
+}
+
+.snack-bar-success {
+    background-color: #00C853;
+}
+
+.snack-bar-info {
+    background-color: #2196F3;
 }

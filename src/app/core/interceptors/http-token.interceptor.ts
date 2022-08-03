@@ -28,7 +28,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           this._snackBar.open('Sessão expirada. Por favor faça login novamente.', '', {
             duration: 4000,
-            panelClass: ['error-snackbar']
+            panelClass: ['snack-bar-error']
           });
           this._authenticationService.logout();
         }
