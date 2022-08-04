@@ -7,6 +7,7 @@ import { PlaylistItemsModel } from 'src/app/shared/models/playlist-items.model';
 import { AlbumApiService } from 'src/app/core/http/album/album-api.service';
 import { PlaylistsApiService } from './../../core/http/playlists/playlists-api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-playlist',
@@ -25,6 +26,9 @@ export class CreatePlaylistComponent implements OnInit {
   yearsReleasesSelected: number[] = [];
   newPlaylist: PlaylistItemsModel['items'] = [];
   formGroup!: FormGroup;
+
+  private subPlaylists$!: Subscription;
+  private subAlbums$!: Subscription;
 
   constructor(
     public dialog: MatDialog,
@@ -58,8 +62,16 @@ export class CreatePlaylistComponent implements OnInit {
         if (selectedCollection !== null && selectedCollection.isAdd && !this.collections.some((item: any) => item.id === selectedCollection.id))
           this.collections.push(selectedCollection);
         else {
-          this.collections = this.collections.filter((item: any) => item.id !== selectedCollection.id);
           this.releaseDates = [];
+
+          if (this.subAlbums$ && !this.subAlbums$.closed) {
+            this.subAlbums$.unsubscribe();
+          }
+          if (this.subPlaylists$ && !this.subPlaylists$.closed) {
+            this.subPlaylists$.unsubscribe();
+          }
+
+          this.collections = this.collections.filter((item: any) => item.id !== selectedCollection.id);
         }
         this.getPlaylistOrAlbum();
       }
@@ -80,7 +92,7 @@ export class CreatePlaylistComponent implements OnInit {
   }
 
   getPlaylistItems(idPlaylist: string, offset: number): void {
-    this._playlistsApiService.getPlaylistItems(idPlaylist, offset).subscribe(
+    this.subPlaylists$ = this._playlistsApiService.getPlaylistItems(idPlaylist, offset).subscribe(
       (response: PlaylistItemsModel) => {
         if (!!response.next) {
           offset += response.limit;
@@ -105,7 +117,7 @@ export class CreatePlaylistComponent implements OnInit {
   }
 
   getAlbumItems(idAlbum: string): void {
-    this._albumApiService.getAlbum(idAlbum).subscribe(
+    this. subAlbums$ = this._albumApiService.getAlbum(idAlbum).subscribe(
       (response: any) => {
         response.tracks.items.map(
           (item: any) => {
