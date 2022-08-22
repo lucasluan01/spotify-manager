@@ -16,13 +16,12 @@ export const environment = {
   locale: 'pt_BR',
 
   clientId: '3a17febb99344e8180c6cf30378d09d8',
-  redirectUri: 'http://localhost:4200/',
+  redirectUri: 'https://spotify-manager-lucasluan01.vercel.app/',
   authEndPoint: 'https://accounts.spotify.com/authorize',
   scopes: [
     'playlist-modify-private',
     'playlist-modify-public',
     'playlist-read-private',
-    // 'playlist-read-public',
     'user-library-read',
     'user-read-email',
     'user-read-private',
