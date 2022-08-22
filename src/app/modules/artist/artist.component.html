@@ -6,7 +6,7 @@
     
     <div class="group">
         <ng-container *ngIf="artist">
-            <img src="{{artist.images[1]?.url || artist.images[0].url}}" alt="" width="175">
+            <img src="{{artist.images[1].url || artist.images[0].url}}" alt="" width="175">
         </ng-container>
         <ng-container *ngIf="!artist">
             <div class="image-default">
@@ -24,6 +24,28 @@
 
 <app-music-table [tracks]="tracks" [dateColumnName]="'Lançado em'"></app-music-table>
 
-<app-list-card [title]="'Playlists'" [collection]="playlists" [collectionType]="'playlist'"></app-list-card>
-<app-list-card [title]="'Álbuns'" [collection]="albums" [collectionType]="'album'"></app-list-card>
-<app-list-card [title]="'Artistas Relacionados'" [collection]="artistsRelated" [collectionType]="'artist'"></app-list-card>
+<div class="section">
+    <h2 class="section__title">Playlists</h2>
+    <div class="section__items">
+        <app-card *ngFor="let item of playlists" [id]="item.id" [image]="item.images[0].url"
+            [description]="item.owner.display_name" [title]="item.name" [collectionType]="'playlist'">
+        </app-card>
+    </div>
+</div>
+<div class="section">
+    <h2 class="section__title">Álbuns</h2>
+    <div class="section__items">
+        <app-card *ngFor="let item of albums" [id]="item.id" [image]="item.images[0].url"
+            [description]="item.artists[0].name" [title]="item.name" [collectionType]="'album'">
+        </app-card>
+    </div>
+</div>
+<div class="section">
+    <h2 class="section__title">Artistas Relacionados</h2>
+    <div class="section__items">
+        <app-card *ngFor="let item of artistsRelated" [id]="item.id"
+            [image]="item.images[1].url || item.images[0].url" [description]="'Artista'" [title]="item.name"
+            [collectionType]="'artist'">
+        </app-card>
+    </div>
+</div>

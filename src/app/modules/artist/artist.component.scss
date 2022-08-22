@@ -91,3 +91,17 @@ header {
         }
     }
 }
+
+.section {
+
+    &__title {
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+        gap: 20px;
+    }
+}

@@ -15,6 +15,7 @@ export class MusicTableComponent implements OnInit {
 
   @Input() tracks: any;
   @Input() dateColumnName: string = '';
+  @Input() noSearch: any;
 
   searchResults: any = [];
   showTracks: any = [];

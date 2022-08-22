@@ -1,2 +1,16 @@
-<app-list-card [title]="title" [collection]="featuredPlaylists" [collectionType]="'playlist'"></app-list-card>
-<app-list-card [title]="'Novos Lançamentos'" [collection]="newReleases" [collectionType]="'album'"></app-list-card>
+<div class="section">
+    <h2 class="section__title">{{title}}</h2>
+    <div class="section__items">
+        <app-card *ngFor="let item of featuredPlaylists" [id]="item.id" [image]="item.images[0].url"
+            [description]="item.owner.display_name" [title]="item.name" [collectionType]="'playlist'">
+        </app-card>
+    </div>
+</div>
+<div class="section">
+    <h2 class="section__title">Novos Lançamentos</h2>
+    <div class="section__items">
+        <app-card *ngFor="let item of newReleases" [id]="item.id" [image]="item.images[0].url" [description]="item.artists[0].name"
+            [title]="item.name" [collectionType]="'album'">
+        </app-card>
+    </div>
+</div>

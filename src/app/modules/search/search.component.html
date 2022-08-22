@@ -8,8 +8,29 @@
 </ng-container>
 
 <ng-container *ngIf="queryInput.value.trim().length > 0">
-    <app-music-table [tracks]="dataSearch.tracks.items" [dateColumnName]="'Lançado em'"></app-music-table>
-    <app-list-card [title]="'Playlists'" [collection]="dataSearch.playlists.items" [collectionType]="'playlist'"></app-list-card>
-    <app-list-card [title]="'Álbuns'" [collection]="dataSearch.albums.items" [collectionType]="'album'"></app-list-card>
-    <app-list-card [title]="'Artistas'" [collection]="dataSearch.artists.items" [collectionType]="'artist'"></app-list-card>
+    <app-music-table [tracks]="dataSearch.tracks.items" [dateColumnName]="'Lançado em'" [noSearch]="true"></app-music-table>
+    <div class="section">
+        <h2 class="section__title">Playlists</h2>
+        <div class="section__items">
+            <app-card *ngFor="let item of dataSearch.playlists.items" [id]="item.id" [image]="item.images[0].url"
+                [description]="item.owner.display_name" [title]="item.name" [collectionType]="'playlist'">
+            </app-card>
+        </div>
+    </div>
+    <div class="section">
+        <h2 class="section__title">Álbuns</h2>
+        <div class="section__items">
+            <app-card *ngFor="let item of dataSearch.albums.items" [id]="item.id" [image]="item.images[0].url"
+                [description]="item.artists[0].name" [title]="item.name" [collectionType]="'album'">
+            </app-card>
+        </div>
+    </div>
+    <div class="section">
+        <h2 class="section__title">Artistas</h2>
+        <div class="section__items">
+            <app-card *ngFor="let item of dataSearch.artists.items" [id]="item.id" [image]="item.images[1].url || item.images[0].url"
+                [description]="'Artista'" [title]="item.name" [collectionType]="'artist'">
+            </app-card>
+        </div>
+    </div>
 </ng-container>
