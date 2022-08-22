@@ -18,9 +18,7 @@ export const environment = {
   users: 'users',
   country: 'BR',
   locale: 'pt_BR',
-};
 
-export const authorizationSpotify = {
   clientId: '3a17febb99344e8180c6cf30378d09d8',
   redirectUri: 'http://localhost:4200/',
   authEndPoint: 'https://accounts.spotify.com/authorize',
@@ -35,12 +33,3 @@ export const authorizationSpotify = {
     'user-read-recently-played',
   ]
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

@@ -1,7 +1,6 @@
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { authorizationSpotify } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +13,10 @@ export class AuthenticationService {
   ) { }
 
   getLoginUrl(): string {
-    const authEndPoint = `${authorizationSpotify.authEndPoint}?`;
-    const clientId = `client_id=${authorizationSpotify.clientId}&`;
-    const redirectUri = `redirect_uri=${authorizationSpotify.redirectUri}&`;
-    const scopes = `scope=${authorizationSpotify.scopes.join('%20')}&`;
+    const authEndPoint = `${environment.authEndPoint}?`;
+    const clientId = `client_id=${environment.clientId}&`;
+    const redirectUri = `redirect_uri=${environment.redirectUri}&`;
+    const scopes = `scope=${environment.scopes.join('%20')}&`;
     const responseType = `response_type=token&show_dialog=true`;
 
     return authEndPoint + clientId + redirectUri + scopes + responseType;
