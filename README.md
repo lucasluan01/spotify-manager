@@ -1,27 +1,41 @@
 # SpotifyManager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+![Apresentação](https://user-images.githubusercontent.com/85650316/188769596-0804ebe6-f132-413f-a3f9-d44c5ce3ccbd.gif)
 
-## Development server
+## 💻 Sobre o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Possibilidade de criar playlist no Spotify mesclando as músicas de outras playlists e álbuns e também você gerar uma nova playlist filtrando pelos anos de lançamentos encontrados nas playlists selecionadas.
 
-## Code scaffolding
+## 🛠 Tecnologias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-## Build
+- [Angular](https://angular.io/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🧭 Rodando a aplicação
 
-## Running unit tests
+```bash
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Esse projeto foi gerado com Angular CLI 13.3.1 - Acesse: https://github.com/angular/angular-cli.
 
-## Running end-to-end tests
+# Clone este repositório
+$ git clone https://github.com/lucasluan01/spotify-manager.git
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Acesse a pasta do projeto no terminal/cmd
+$ cd spotify-manager
 
-## Further help
+# Instale as dependências
+$ npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Execute a aplicação em modo de desenvolvimento
+$ ng serve --o
+
+# O servidor inciará na porta:4200 - acesse <http://localhost:4200/>
+
+#O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
+```
+
+## Autor
+
+Desenvolvido por Lucas Luan 💻 [Entre em contato!](https://www.linkedin.com/in/lucas-luan-dos-santos/)
